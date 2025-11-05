@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📄 Question Format Guide - KYP Exam System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            padding: 10px 0;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #7f8c8d;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        .format-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #155724;
+        }
+
+        .error-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #721c24;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #0c5460;
+        }
+
+        .tip {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #856404;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .code {
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: #fff2cc;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/admin" class="back-btn">← Back to Admin Panel</a>
+        
+        <h1>📄 Question Format Guide for PDF/DOC Upload</h1>
+
+        <div class="info-box">
+            <strong>🎯 यह guide आपको बताती है कि PDF या Word document में questions कैसे format करें ताकि system automatically उन्हें detect कर सके।</strong>
+        </div>
+
+        <h2>🎯 Supported File Formats</h2>
+        <ul>
+            <li><strong>PDF Files</strong> (.pdf)</li>
+            <li><strong>MS Word Documents</strong> (.doc, .docx)</li>
+            <li><strong>Maximum File Size</strong>: 10 MB</li>
+        </ul>
+
+        <h2>📝 Question Format Requirements</h2>
+
+        <h3>Format 1: Standard MCQ Format (Recommended)</h3>
+        <div class="format-example">1. कंप्यूटर का पूरा नाम क्या है?
+A) Common Operating Machine
+B) Computer Operated Machine
+C) Common Operating Machine Particularly Used for Trade
+D) Commonly Operated Machine Particularly Used for Technical Research
+Answer: C
+
+2. MS Word में किस shortcut key से Save करते हैं?
+A) Ctrl+S
+B) Ctrl+A
+C) Ctrl+C
+D) Ctrl+V
+उत्तर: A</div>
+
+        <h3>Format 2: Numbered Questions with Options</h3>
+        <div class="format-example">Q1. What is the full form of CPU?
+a) Central Processing Unit
+b) Computer Processing Unit
+c) Central Program Unit
+d) Computer Program Unit
+Ans: A
+
+Q2. Which device is used for input?
+a) Monitor
+b) Printer
+c) Keyboard
+d) Speaker
+Answer: C</div>
+
+        <h3>Format 3: Simple List Format</h3>
+        <div class="format-example">1. HTML का पूरा नाम क्या है?
+HyperText Markup Language
+HyperText Making Language
+HyperText Modeling Language
+HyperText Management Language
+
+2. CSS का उपयोग किसके लिए होता है?
+Styling webpages
+Database management
+Programming logic
+File compression</div>
+
+        <h2>✅ Best Practices</h2>
+
+        <h3>1. Question Numbering</h3>
+        <div class="success-box">
+            <strong>✅ Good Examples:</strong><br>
+            • <span class="code">1.</span>, <span class="code">Q1.</span>, या <span class="code">Question 1:</span><br>
+            • Consistent numbering बनाए रखें
+        </div>
+
+        <h3>2. Option Formats (कोई भी format use कर सकते हैं)</h3>
+        <div class="success-box">
+            <strong>✅ Supported Formats:</strong><br>
+            • <span class="code">A)</span>, <span class="code">B)</span>, <span class="code">C)</span>, <span class="code">D)</span><br>
+            • <span class="code">(A)</span>, <span class="code">(B)</span>, <span class="code">(C)</span>, <span class="code">(D)</span><br>
+            • <span class="code">a)</span>, <span class="code">b)</span>, <span class="code">c)</span>, <span class="code">d)</span><br>
+            • <span class="code">(a)</span>, <span class="code">(b)</span>, <span class="code">(c)</span>, <span class="code">(d)</span>
+        </div>
+
+        <h3>3. Answer Indication (Optional but recommended)</h3>
+        <div class="success-box">
+            <strong>✅ Answer Formats:</strong><br>
+            • <span class="code">Answer: A</span> या <span class="code">Ans: A</span><br>
+            • <span class="code">उत्तर: A</span> (for Hindi)<br>
+            • अगर answer नहीं दिया तो first option को correct मान लिया जाएगा
+        </div>
+
+        <h3>4. Language Support</h3>
+        <div class="info-box">
+            • <strong>Hindi और English</strong> दोनों supported हैं<br>
+            • Mixed language questions भी work करते हैं<br>
+            • Upload के समय appropriate language select करें
+        </div>
+
+        <h3>5. Question Separation</h3>
+        <div class="tip">
+            <strong>💡 Tip:</strong> Questions के बीच blank line छोड़ें - इससे better parsing होती है
+        </div>
+
+        <h2>🚫 Common Issues to Avoid</h2>
+
+        <h3>❌ Don't Do This:</h3>
+        <div class="error-box">
+            <strong>गलत Format:</strong><br>
+            What is CPU?<br>
+            - Central Processing Unit<br>
+            - Computer Processing Unit<br>
+            - Central Program Unit<br>
+            - Computer Program Unit
+        </div>
+
+        <h3>❌ Avoid:</h3>
+        <ul>
+            <li>Bullet points (•) का use करना instead of letters</li>
+            <li>Same document में different option formats mix करना</li>
+            <li>बहुत long questions (>500 characters)</li>
+            <li>Special characters जो parsing confuse कर सकें</li>
+        </ul>
+
+        <h2>🎯 Tips for Better Results</h2>
+
+        <div class="tip">
+            <strong>1. Keep it Simple:</strong> Clear, standard formats use करें<br>
+            <strong>2. Consistency:</strong> पूरे document में same format maintain करें<br>
+            <strong>3. Clear Options:</strong> हर option अलग line पर होना चाहिए<br>
+            <strong>4. Proper Spacing:</strong> Questions के बीच space छोड़ें<br>
+            <strong>5. Review:</strong> Upload के बाद extracted questions को हमेशा review करें
+        </div>
+
+        <h2>🔧 Troubleshooting</h2>
+
+        <h3>अगर questions detect नहीं हो रहे:</h3>
+        <ul>
+            <li>Check करें कि format ऊपर दिए examples से match करता है</li>
+            <li>Proper option formatting ensure करें (A), B), C), D))</li>
+            <li>Questions clearly separated हों</li>
+            <li>File corrupted या password protected तो नहीं</li>
+        </ul>
+
+        <h3>अगर options missing हैं:</h3>
+        <ul>
+            <li>Options separate lines पर हों</li>
+            <li>Proper option prefixes use करें (A), B), etc.)</li>
+            <li>Different option formats को mix न करें</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>📞 Support:</strong><br>
+            • Error के case में extracted text preview check करें<br>
+            • Complex formatting के लिए manual question entry use करें<br>
+            • Issues के लिए system administrator से contact करें
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h2 style="color: #27ae60; margin: 0;">🚀 Happy Question Creation!</h2>
+            <p style="margin: 10px 0 0 0; color: #666;">अब आप easily PDF/Word से questions import कर सकते हैं।</p>
+        </div>
+    </div>
+</body>
+</html>

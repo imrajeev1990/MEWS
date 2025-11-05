@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hindi Encoding</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 { color: #2c3e50; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-box">
+        <h2>Test 1: Static Hindi Text</h2>
+        <p>Accounting में Debit का मतलब क्या है?</p>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 2: API Response (Hindi)</h2>
+        <div id="api-hindi"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 3: API Response (English)</h2>
+        <div id="api-english"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 4: Raw JSON Character Codes</h2>
+        <pre id="char-codes"></pre>
+    </div>
+
+    <script>
+        async function testEncoding() {
+            try {
+                // Test Hindi API
+                const hiResponse = await fetch('/api/questions/bs-cfa?lang=hi');
+                const hiData = await hiResponse.json();
+                
+                document.getElementById('api-hindi').innerHTML = `
+                    <p><strong>Question 1:</strong> ${hiData[0].question}</p>
+                    <p><strong>Option 1:</strong> ${hiData[0].options[0]}</p>
+                `;
+
+                // Test English API
+                const enResponse = await fetch('/api/questions/bs-cfa?lang=en');
+                const enData = await enResponse.json();
+                
+                document.getElementById('api-english').innerHTML = `
+                    <p><strong>Question 1:</strong> ${enData[0].question}</p>
+                    <p><strong>Option 1:</strong> ${enData[0].options[0]}</p>
+                `;
+
+                // Show character codes
+                const questionText = hiData[0].question;
+                let charCodes = '';
+                for (let i = 0; i < Math.min(20, questionText.length); i++) {
+                    const char = questionText[i];
+                    const code = questionText.charCodeAt(i);
+                    charCodes += `${char} = U+${code.toString(16).toUpperCase().padStart(4, '0')}\n`;
+                }
+                document.getElementById('char-codes').textContent = charCodes;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('api-hindi').innerHTML = '<p style="color: red;">Error loading data: ' + error.message + '</p>';
+            }
+        }
+
+        testEncoding();
+    </script>
+</body>
+</html>

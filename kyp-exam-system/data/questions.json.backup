@@ -1,0 +1,1663 @@
+﻿{
+    "bs-cit":  [
+                   {
+                       "id":  1,
+                       "question":  {
+                                        "hi":  "à¤•à¤‚à¤ªà¥à¤¯à¥‚à¤Ÿà¤° à¤•à¤¾ à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤® à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "What is the full form of COMPUTER?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Common Operating Machine",
+                                                  "Computer Operated Machine",
+                                                  "Common Operating Machine Particularly Used for Trade",
+                                                  "Commonly Operated Machine Particularly Used for Technical Research"
+                                              ],
+                                       "en":  [
+                                                  "Common Operating Machine",
+                                                  "Computer Operated Machine",
+                                                  "Common Operating Machine Particularly Used for Trade",
+                                                  "Commonly Operated Machine Particularly Used for Technical Research"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "easy"
+                   },
+                   {
+                       "id":  2,
+                       "question":  {
+                                        "hi":  "MS Word à¤®à¥‡à¤‚ à¤•à¤¿à¤¸ shortcut key à¤¸à¥‡ Save à¤•à¤°à¤¤à¥‡ à¤¹à¥ˆà¤‚?",
+                                        "en":  "Which shortcut key is used to Save in MS Word?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Ctrl+S",
+                                                  "Ctrl+A",
+                                                  "Ctrl+C",
+                                                  "Ctrl+V"
+                                              ],
+                                       "en":  [
+                                                  "Ctrl+S",
+                                                  "Ctrl+A",
+                                                  "Ctrl+C",
+                                                  "Ctrl+V"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "easy"
+                   },
+                   {
+                       "id":  3,
+                       "question":  "Internet à¤®à¥‡à¤‚ WWW à¤•à¤¾ à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤® à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                       "options":  [
+                                       "World Wide Web",
+                                       "World Wide Website",
+                                       "World Web Wide",
+                                       "Wide World Web"
+                                   ],
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   }
+               ],
+    "language-skill":  [
+                           {
+                               "id":  1,
+                               "question":  "à¤¨à¤¿à¤®à¥à¤¨à¤²à¤¿à¤–à¤¿à¤¤ à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥Œà¤¨ à¤¸à¤¾ à¤µà¤¾à¤•à¥à¤¯ à¤¶à¥à¤¦à¥à¤§ à¤¹à¥ˆ?",
+                               "options":  [
+                                               "à¤®à¥ˆà¤‚ à¤ªà¤¾à¤¨à¥€ à¤ªà¥€à¤¤à¤¾ à¤¹à¥‚à¤",
+                                               "à¤®à¥ˆà¤‚ à¤ªà¤¾à¤¨à¥€ à¤ªà¥€à¤¤à¤¾ à¤¹à¥ˆ",
+                                               "à¤®à¥ˆà¤‚ à¤ªà¤¾à¤¨à¥€ à¤ªà¥€à¤¤à¥€ à¤¹à¥‚à¤",
+                                               "à¤®à¥ˆà¤‚ à¤ªà¤¾à¤¨à¥€ à¤ªà¥€à¤¤à¥‡ à¤¹à¥ˆà¤‚"
+                                           ],
+                               "correct":  0,
+                               "marks":  1,
+                               "difficulty":  "easy"
+                           },
+                           {
+                               "id":  2,
+                               "question":  "\u0027à¤…à¤¨à¥à¤°à¤¾à¤—\u0027 à¤¶à¤¬à¥à¤¦ à¤•à¤¾ à¤µà¤¿à¤²à¥‹à¤® à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                               "options":  [
+                                               "à¤ªà¥à¤°à¥‡à¤®",
+                                               "à¤µà¤¿à¤°à¤¾à¤—",
+                                               "à¤¸à¥à¤¨à¥‡à¤¹",
+                                               "à¤­à¤•à¥à¤¤à¤¿"
+                                           ],
+                               "correct":  1,
+                               "marks":  1,
+                               "difficulty":  "medium"
+                           }
+                       ],
+    "soft-skills":  [
+                        {
+                            "id":  1,
+                            "question":  "Communication Skills à¤•à¤¾ à¤®à¤¤à¤²à¤¬ à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                            "options":  [
+                                            "à¤¬à¤¾à¤¤à¤šà¥€à¤¤ à¤•à¤°à¤¨à¤¾",
+                                            "à¤¸à¤‚à¤µà¤¾à¤¦ à¤•à¥Œà¤¶à¤²",
+                                            "à¤«à¥‹à¤¨ à¤ªà¤° à¤¬à¤¾à¤¤ à¤•à¤°à¤¨à¤¾",
+                                            "à¤šà¤¿à¤Ÿà¥à¤ à¥€ à¤²à¤¿à¤–à¤¨à¤¾"
+                                        ],
+                            "correct":  1,
+                            "marks":  1,
+                            "difficulty":  "easy"
+                        },
+                        {
+                            "id":  2,
+                            "question":  "Team Work à¤®à¥‡à¤‚ à¤¸à¤¬à¤¸à¥‡ à¤®à¤¹à¤¤à¥à¤µà¤ªà¥‚à¤°à¥à¤£ à¤šà¥€à¤œ à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                            "options":  [
+                                            "à¤…à¤•à¥‡à¤²à¥‡ à¤•à¤¾à¤® à¤•à¤°à¤¨à¤¾",
+                                            "à¤¸à¤¹à¤¯à¥‹à¤— à¤•à¤°à¤¨à¤¾",
+                                            "à¤•à¥‡à¤µà¤² à¤…à¤ªà¤¨à¤¾ à¤•à¤¾à¤® à¤•à¤°à¤¨à¤¾",
+                                            "à¤¦à¥‚à¤¸à¤°à¥‹à¤‚ à¤ªà¤° à¤¨à¤¿à¤°à¥à¤­à¤° à¤°à¤¹à¤¨à¤¾"
+                                        ],
+                            "correct":  1,
+                            "marks":  1,
+                            "difficulty":  "medium"
+                        }
+                    ],
+    "bs-cfa":  [
+                   {
+                       "id":  1,
+                       "question":  {
+                                        "hi":  "Accounting à¤®à¥‡à¤‚ Debit à¤•à¤¾ à¤®à¤¤à¤²à¤¬ à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "What does Debit mean in Accounting?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¨à¤¾à¤®à¥‡ (à¤¬à¤¾à¤à¤‚ à¤¤à¤°à¤« à¤•à¥€ entry)",
+                                                  "à¤œà¤®à¤¾ (à¤¦à¤¾à¤à¤‚ à¤¤à¤°à¤« à¤•à¥€ entry)",
+                                                  "à¤•à¥‡à¤µà¤² à¤–à¤°à¥à¤š",
+                                                  "à¤•à¥‡à¤µà¤² à¤†à¤¯"
+                                              ],
+                                       "en":  [
+                                                  "Left side entry",
+                                                  "Right side entry",
+                                                  "Expense only",
+                                                  "Income only"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "easy"
+                   },
+                   {
+                       "id":  2,
+                       "question":  {
+                                        "hi":  "Balance Sheet à¤®à¥‡à¤‚ Assets à¤”à¤° Liabilities à¤•à¤¾ à¤•à¥à¤¯à¤¾ relation à¤¹à¥ˆ?",
+                                        "en":  "What is the relation between Assets and Liabilities in Balance Sheet?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Assets = Liabilities + Capital",
+                                                  "Assets = Liabilities - Capital",
+                                                  "Assets + Liabilities = Capital",
+                                                  "Assets - Liabilities = 0"
+                                              ],
+                                       "en":  [
+                                                  "Assets = Liabilities + Capital",
+                                                  "Assets = Liabilities - Capital",
+                                                  "Assets + Liabilities = Capital",
+                                                  "Assets - Liabilities = 0"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  3,
+                       "question":  {
+                                        "hi":  "Cash Book à¤®à¥‡à¤‚ à¤•à¥Œà¤¨ à¤¸à¥‡ transactions record à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚?",
+                                        "en":  "Which transactions are recorded in Cash Book?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤•à¥‡à¤µà¤² cash transactions",
+                                                  "à¤•à¥‡à¤µà¤² bank transactions",
+                                                  "Cash à¤”à¤° Bank à¤¦à¥‹à¤¨à¥‹à¤‚ transactions",
+                                                  "Credit transactions"
+                                              ],
+                                       "en":  [
+                                                  "Only cash transactions",
+                                                  "Only bank transactions",
+                                                  "Both Cash and Bank transactions",
+                                                  "Credit transactions"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  4,
+                       "question":  {
+                                        "hi":  "Trial Balance à¤¬à¤¨à¤¾à¤¨à¥‡ à¤•à¤¾ à¤®à¥à¤–à¥à¤¯ à¤‰à¤¦à¥à¤¦à¥‡à¤¶à¥à¤¯ à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "What is the main purpose of preparing Trial Balance?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Profit calculate à¤•à¤°à¤¨à¤¾",
+                                                  "Accounting errors check à¤•à¤°à¤¨à¤¾",
+                                                  "Tax calculate à¤•à¤°à¤¨à¤¾",
+                                                  "Salary calculate à¤•à¤°à¤¨à¤¾"
+                                              ],
+                                       "en":  [
+                                                  "To calculate profit",
+                                                  "To check accounting errors",
+                                                  "To calculate tax",
+                                                  "To calculate salary"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  5,
+                       "question":  {
+                                        "hi":  "GST à¤•à¤¾ à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤® à¤•à¥à¤¯à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "What is the full form of GST?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Good Service Tax",
+                                                  "Goods and Services Tax",
+                                                  "Government Service Tax",
+                                                  "General Sales Tax"
+                                              ],
+                                       "en":  [
+                                                  "Good Service Tax",
+                                                  "Goods and Services Tax",
+                                                  "Government Service Tax",
+                                                  "General Sales Tax"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "easy"
+                   },
+                   {
+                       "id":  6,
+                       "question":  {
+                                        "hi":  "à¤ªà¤°à¤¿à¤µà¤¹à¤¨ à¤•à¥‡ à¤²à¤¿à¤ à¤–à¤¾à¤¤à¤¾ à¤•à¤¿à¤¸ à¤²à¥‡à¤–à¤¾ à¤¸à¤®à¥‚à¤¹ à¤•à¥‡ à¤¤à¤¹à¤¤ à¤¬à¤¨à¤¾à¤¯à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆà¤‚?",
+                                        "en":  "à¤ªà¤°à¤¿à¤µà¤¹à¤¨ à¤•à¥‡ à¤²à¤¿à¤ à¤–à¤¾à¤¤à¤¾ à¤•à¤¿à¤¸ à¤²à¥‡à¤–à¤¾ à¤¸à¤®à¥‚à¤¹ à¤•à¥‡ à¤¤à¤¹à¤¤ à¤¬à¤¨à¤¾à¤¯à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆà¤‚?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤‚à¤¡à¥à¤°à¥€ à¤¡à¥‡à¤Ÿà¤°à¥à¤¸",
+                                                  "à¤¸à¤‚à¤¡à¥à¤°à¥€ à¤•à¥à¤°à¥‡à¤¡à¤¿à¤Ÿà¤°à¥à¤¸",
+                                                  "à¤‡à¤¨à¤¡à¤¾à¤¯à¤°à¥‡à¤•à¥à¤Ÿ à¤à¤•à¥à¤¸à¤ªà¥‡à¤‚à¤¸",
+                                                  "à¤¡à¤¾à¤¯à¤°à¥‡à¤•à¥à¤Ÿ à¤à¤•à¥à¤¸à¤ªà¥‡à¤‚à¤¸"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤‚à¤¡à¥à¤°à¥€ à¤¡à¥‡à¤Ÿà¤°à¥à¤¸",
+                                                  "à¤¸à¤‚à¤¡à¥à¤°à¥€ à¤•à¥à¤°à¥‡à¤¡à¤¿à¤Ÿà¤°à¥à¤¸",
+                                                  "à¤‡à¤¨à¤¡à¤¾à¤¯à¤°à¥‡à¤•à¥à¤Ÿ à¤à¤•à¥à¤¸à¤ªà¥‡à¤‚à¤¸",
+                                                  "à¤¡à¤¾à¤¯à¤°à¥‡à¤•à¥à¤Ÿ à¤à¤•à¥à¤¸à¤ªà¥‡à¤‚à¤¸"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  7,
+                       "question":  {
+                                        "hi":  "à¤Ÿà¥ˆà¤•à¥à¤¸à¥‡à¤¬à¤² à¤à¤•à¥à¤¸à¤ªà¥‹à¤°à¥à¤Ÿà¥à¤¸ à¤•à¥‡ à¤®à¤¾à¤®à¤²à¥‡ à¤®à¥‡à¤‚ à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥Œà¤¨ à¤¸à¤¾ à¤Ÿà¥ˆà¤•à¥à¤¸ à¤à¤ªà¥à¤²à¤¿à¤•à¥‡à¤¬à¤² à¤¹à¥ˆ?",
+                                        "en":  "à¤Ÿà¥ˆà¤•à¥à¤¸à¥‡à¤¬à¤² à¤à¤•à¥à¤¸à¤ªà¥‹à¤°à¥à¤Ÿà¥à¤¸ à¤•à¥‡ à¤®à¤¾à¤®à¤²à¥‡ à¤®à¥‡à¤‚ à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥Œà¤¨ à¤¸à¤¾ à¤Ÿà¥ˆà¤•à¥à¤¸ à¤à¤ªà¥à¤²à¤¿à¤•à¥‡à¤¬à¤² à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "CGST",
+                                                  "SGST",
+                                                  "IGST",
+                                                  "VAT"
+                                              ],
+                                       "en":  [
+                                                  "CGST",
+                                                  "SGST",
+                                                  "IGST",
+                                                  "VAT"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  8,
+                       "question":  {
+                                        "hi":  "à¤œà¤¿à¤¸ à¤•à¤‚à¤ªà¤¨à¥€ à¤•à¥‡ à¤¶à¥‡à¤¯à¤° à¤¬à¤¾à¤œà¤¾à¤° à¤®à¥‡à¤‚ à¤¸à¥‚à¤šà¥€à¤¬à¤¦à¥à¤§ à¤¨à¤¹à¥€à¤‚ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚?",
+                                        "en":  "à¤œà¤¿à¤¸ à¤•à¤‚à¤ªà¤¨à¥€ à¤•à¥‡ à¤¶à¥‡à¤¯à¤° à¤¬à¤¾à¤œà¤¾à¤° à¤®à¥‡à¤‚ à¤¸à¥‚à¤šà¥€à¤¬à¤¦à¥à¤§ à¤¨à¤¹à¥€à¤‚ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤ªà¥à¤°à¤¾à¤¯à¤µà¥‡à¤Ÿ à¤²à¤¿à¤®à¤¿à¤Ÿà¥‡à¤¡ à¤•à¤‚à¤ªà¤¨à¥€",
+                                                  "à¤ªà¤¬à¥à¤²à¤¿à¤• à¤²à¤¿à¤®à¤¿à¤Ÿà¥‡à¤¡ à¤•à¤‚à¤ªà¤¨à¥€",
+                                                  "LLP",
+                                                  "à¤­à¤¾à¤—à¥€à¤¦à¤¾à¤°à¥€ à¤«à¤°à¥à¤®"
+                                              ],
+                                       "en":  [
+                                                  "à¤ªà¥à¤°à¤¾à¤¯à¤µà¥‡à¤Ÿ à¤²à¤¿à¤®à¤¿à¤Ÿà¥‡à¤¡ à¤•à¤‚à¤ªà¤¨à¥€",
+                                                  "à¤ªà¤¬à¥à¤²à¤¿à¤• à¤²à¤¿à¤®à¤¿à¤Ÿà¥‡à¤¡ à¤•à¤‚à¤ªà¤¨à¥€",
+                                                  "LLP",
+                                                  "à¤­à¤¾à¤—à¥€à¤¦à¤¾à¤°à¥€ à¤«à¤°à¥à¤®"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  9,
+                       "question":  {
+                                        "hi":  "à¤¨à¥‰à¤¨ à¤…à¤•à¤¾à¤‰à¤‚à¤Ÿà¤¿à¤‚à¤— à¤µà¤¾à¤‰à¤šà¤° à¤•à¥‹ à¤•à¥€à¤¬à¥‹à¤°à¥à¤¡ à¤¶à¥‰à¤°à¥à¤Ÿà¤•à¤Ÿ à¤¸à¥‡ à¤µà¥ˆà¤•à¤²à¥à¤ªà¤¿à¤• à¤µà¤¾à¤‰à¤šà¤° à¤•à¥‡ à¤°à¥‚à¤ª à¤®à¥‡à¤‚ à¤¦à¤¿à¤–à¤¾à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ à¤¸à¥€ Key?",
+                                        "en":  "à¤¨à¥‰à¤¨ à¤…à¤•à¤¾à¤‰à¤‚à¤Ÿà¤¿à¤‚à¤— à¤µà¤¾à¤‰à¤šà¤° à¤•à¥‹ à¤•à¥€à¤¬à¥‹à¤°à¥à¤¡ à¤¶à¥‰à¤°à¥à¤Ÿà¤•à¤Ÿ à¤¸à¥‡ à¤µà¥ˆà¤•à¤²à¥à¤ªà¤¿à¤• à¤µà¤¾à¤‰à¤šà¤° à¤•à¥‡ à¤°à¥‚à¤ª à¤®à¥‡à¤‚ à¤¦à¤¿à¤–à¤¾à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ à¤¸à¥€ Key?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Ctrl+R",
+                                                  "Ctrl+A",
+                                                  "Ctrl+O",
+                                                  "Ctrl+L"
+                                              ],
+                                       "en":  [
+                                                  "Ctrl+R",
+                                                  "Ctrl+A",
+                                                  "Ctrl+O",
+                                                  "Ctrl+L"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  10,
+                       "question":  {
+                                        "hi":  "à¤¨à¥‡à¤—à¥‡à¤Ÿà¤¿à¤µ Attendance à¤•à¥‹ Record à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ Attendance/leave with pay Option à¤•à¤¾ Use à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¿à¤à¥¤",
+                                        "en":  "à¤¨à¥‡à¤—à¥‡à¤Ÿà¤¿à¤µ Attendance à¤•à¥‹ Record à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ Attendance/leave with pay Option à¤•à¤¾ Use à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¿à¤à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  11,
+                       "question":  {
+                                        "hi":  "à¤‡à¤®à¤¾à¤°à¤¤ à¤à¤• Intangible Real Account à¤•à¤¾ Example à¤¹à¥ˆà¥¤",
+                                        "en":  "à¤‡à¤®à¤¾à¤°à¤¤ à¤à¤• Intangible Real Account à¤•à¤¾ Example à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  12,
+                       "question":  {
+                                        "hi":  "GST à¤•à¥‡ à¤…à¤‚à¤¤à¤°à¥à¤—à¤¤ Dealer à¤œà¤¿à¤¸à¤•à¤¾ Turnover Threshold à¤¸à¥‡ à¤•à¤® à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "GST à¤•à¥‡ à¤…à¤‚à¤¤à¤°à¥à¤—à¤¤ Dealer à¤œà¤¿à¤¸à¤•à¤¾ Turnover Threshold à¤¸à¥‡ à¤•à¤® à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Composite",
+                                                  "Registered",
+                                                  "Casual",
+                                                  "Unregistered"
+                                              ],
+                                       "en":  [
+                                                  "Composite",
+                                                  "Registered",
+                                                  "Casual",
+                                                  "Unregistered"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  13,
+                       "question":  {
+                                        "hi":  "Tally à¤®à¥‡à¤‚ Stock Item Master à¤®à¥‡à¤‚ Alternate UOM Allow à¤•à¥€ à¤œà¤¾à¤¤à¥€ à¤¹à¥ˆà¥¤",
+                                        "en":  "Tally à¤®à¥‡à¤‚ Stock Item Master à¤®à¥‡à¤‚ Alternate UOM Allow à¤•à¥€ à¤œà¤¾à¤¤à¥€ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  14,
+                       "question":  {
+                                        "hi":  "Credit Note à¤•à¥‹ Goods Sold Return à¤®à¥‡à¤‚ à¤‰à¤ à¤¾à¤¯à¤¾ à¤œà¤¾ à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+                                        "en":  "Credit Note à¤•à¥‹ Goods Sold Return à¤®à¥‡à¤‚ à¤‰à¤ à¤¾à¤¯à¤¾ à¤œà¤¾ à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  15,
+                       "question":  {
+                                        "hi":  "à¤­à¤¾à¤—à¥€à¤¦à¤¾à¤°à¥€ à¤•à¥‡ à¤¨à¤¿à¤¯à¤®à¥‹à¤‚ à¤•à¥‹ à¤²à¤¿à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤œà¥‹ Agreement à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "à¤­à¤¾à¤—à¥€à¤¦à¤¾à¤°à¥€ à¤•à¥‡ à¤¨à¤¿à¤¯à¤®à¥‹à¤‚ à¤•à¥‹ à¤²à¤¿à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤œà¥‹ Agreement à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Partnership Agreement",
+                                                  "Partnership Contract",
+                                                  "Partnership Act",
+                                                  "Partnership Deed"
+                                              ],
+                                       "en":  [
+                                                  "Partnership Agreement",
+                                                  "Partnership Contract",
+                                                  "Partnership Act",
+                                                  "Partnership Deed"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  16,
+                       "question":  {
+                                        "hi":  "Bill of Material Setup à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway â†’ F11 â†’ Configure â†’ Accounts/Inventory Info à¤®à¥‡à¤‚ à¤œà¤¾à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+                                        "en":  "Bill of Material Setup à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway â†’ F11 â†’ Configure â†’ Accounts/Inventory Info à¤®à¥‡à¤‚ à¤œà¤¾à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "F10",
+                                                  "F12",
+                                                  "F11",
+                                                  "F8"
+                                              ],
+                                       "en":  [
+                                                  "F10",
+                                                  "F12",
+                                                  "F11",
+                                                  "F8"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  17,
+                       "question":  {
+                                        "hi":  "à¤•à¤¾à¤°à¤£ à¤¬à¤¤à¤¾à¤“ à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤•à¤¾ à¤®à¤¤à¤²à¤¬ Dept à¤¦à¥à¤µà¤¾à¤°à¤¾ à¤œà¤¾à¤°à¥€ à¤à¤• à¤†à¤¦à¥‡à¤¶/à¤œà¤¾à¤‚à¤š à¤¹à¥ˆà¥¤",
+                                        "en":  "à¤•à¤¾à¤°à¤£ à¤¬à¤¤à¤¾à¤“ à¤¨à¥‹à¤Ÿà¤¿à¤¸ à¤•à¤¾ à¤®à¤¤à¤²à¤¬ Dept à¤¦à¥à¤µà¤¾à¤°à¤¾ à¤œà¤¾à¤°à¥€ à¤à¤• à¤†à¤¦à¥‡à¤¶/à¤œà¤¾à¤‚à¤š à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  18,
+                       "question":  {
+                                        "hi":  "TDS Payment nature wise / section wise / company \u0026 non company reports à¤•à¥‡ à¤†à¤§à¤¾à¤° à¤ªà¤° à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¿à¤à¥¤",
+                                        "en":  "TDS Payment nature wise / section wise / company \u0026 non company reports à¤•à¥‡ à¤†à¤§à¤¾à¤° à¤ªà¤° à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¿à¤à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Nature wise",
+                                                  "Section wise",
+                                                  "Company \u0026 non company",
+                                                  "à¤‰à¤ªà¤°à¥‹à¤•à¥à¤¤ à¤¸à¤­à¥€"
+                                              ],
+                                       "en":  [
+                                                  "Nature wise",
+                                                  "Section wise",
+                                                  "Company \u0026 non company",
+                                                  "à¤‰à¤ªà¤°à¥‹à¤•à¥à¤¤ à¤¸à¤­à¥€"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  19,
+                       "question":  {
+                                        "hi":  "Brand Ambassador à¤•à¥‡ à¤²à¤¿à¤ Celebrity à¤•à¥‹ à¤¦à¥€ à¤—à¤ˆ à¤°à¤¾à¤¶à¤¿ à¤•à¤¿à¤¸ à¤–à¤°à¥à¤š à¤®à¥‡à¤‚ à¤†à¤¤à¥€ à¤¹à¥ˆ?",
+                                        "en":  "Brand Ambassador à¤•à¥‡ à¤²à¤¿à¤ Celebrity à¤•à¥‹ à¤¦à¥€ à¤—à¤ˆ à¤°à¤¾à¤¶à¤¿ à¤•à¤¿à¤¸ à¤–à¤°à¥à¤š à¤®à¥‡à¤‚ à¤†à¤¤à¥€ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Direct Expense",
+                                                  "Tax added Expense",
+                                                  "Administrative Expense",
+                                                  "Marketing Expense"
+                                              ],
+                                       "en":  [
+                                                  "Direct Expense",
+                                                  "Tax added Expense",
+                                                  "Administrative Expense",
+                                                  "Marketing Expense"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  20,
+                       "question":  {
+                                        "hi":  "Security Control Setup à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway à¤¸à¥‡ à¤•à¤¹à¤¾à¤ à¤œà¤¾à¤¨à¤¾ à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "Security Control Setup à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway à¤¸à¥‡ à¤•à¤¹à¤¾à¤ à¤œà¤¾à¤¨à¤¾ à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "F11 â†’ Accounting Features",
+                                                  "F11 â†’ Security Control",
+                                                  "Alt+F3 Security Control",
+                                                  "F3 Security Control"
+                                              ],
+                                       "en":  [
+                                                  "F11 â†’ Accounting Features",
+                                                  "F11 â†’ Security Control",
+                                                  "Alt+F3 Security Control",
+                                                  "F3 Security Control"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  21,
+                       "question":  {
+                                        "hi":  "à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥Œà¤¨ à¤¨ Voucher type à¤¹à¥ˆ à¤¨à¤¾ Tally à¤¦à¥à¤µà¤¾à¤°à¤¾ Valid Entry Type?",
+                                        "en":  "à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥Œà¤¨ à¤¨ Voucher type à¤¹à¥ˆ à¤¨à¤¾ Tally à¤¦à¥à¤µà¤¾à¤°à¤¾ Valid Entry Type?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Bank Book",
+                                                  "Contra Entry",
+                                                  "Day Book",
+                                                  "Sales Voucher"
+                                              ],
+                                       "en":  [
+                                                  "Bank Book",
+                                                  "Contra Entry",
+                                                  "Day Book",
+                                                  "Sales Voucher"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  22,
+                       "question":  {
+                                        "hi":  "Similar nature transactions à¤•à¥‹ Sub Group à¤®à¥‡à¤‚ Classified à¤•à¤¿à¤¯à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+                                        "en":  "Similar nature transactions à¤•à¥‹ Sub Group à¤®à¥‡à¤‚ Classified à¤•à¤¿à¤¯à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  23,
+                       "question":  {
+                                        "hi":  "Stock Item Reports à¤¦à¥‡à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway â†’ Display â†’ Inventory Books â†’ Stock Item à¤®à¥‡à¤‚ à¤œà¤¾à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+                                        "en":  "Stock Item Reports à¤¦à¥‡à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Gateway â†’ Display â†’ Inventory Books â†’ Stock Item à¤®à¥‡à¤‚ à¤œà¤¾à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Movement Analysis",
+                                                  "Stock Item",
+                                                  "Daily Breakup",
+                                                  "Ratio Analysis"
+                                              ],
+                                       "en":  [
+                                                  "Movement Analysis",
+                                                  "Stock Item",
+                                                  "Daily Breakup",
+                                                  "Ratio Analysis"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  24,
+                       "question":  {
+                                        "hi":  "à¤µà¥ˆà¤¸à¤¾ Deductor à¤œà¤¿à¤¸à¤¨à¥‡ Goods/Services supply à¤•à¥€ à¤¹à¥ˆ, à¤µà¤¹ TDS Credit à¤•à¤¾ Claim à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¤¾à¥¤",
+                                        "en":  "à¤µà¥ˆà¤¸à¤¾ Deductor à¤œà¤¿à¤¸à¤¨à¥‡ Goods/Services supply à¤•à¥€ à¤¹à¥ˆ, à¤µà¤¹ TDS Credit à¤•à¤¾ Claim à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¤¾à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  25,
+                       "question":  {
+                                        "hi":  "Balance Sheet à¤®à¥‡à¤‚ values à¤¦à¥‡à¤–à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ Shortcut?",
+                                        "en":  "Balance Sheet à¤®à¥‡à¤‚ values à¤¦à¥‡à¤–à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ Shortcut?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  26,
+                       "question":  {
+                                        "hi":  "TDS Deduction à¤ªà¤° Issue Certificate à¤•à¥‹ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "TDS Deduction à¤ªà¤° Issue Certificate à¤•à¥‹ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Form 16",
+                                                  "Form 16A",
+                                                  "Form 24",
+                                                  "Form 24A"
+                                              ],
+                                       "en":  [
+                                                  "Form 16",
+                                                  "Form 16A",
+                                                  "Form 24",
+                                                  "Form 24A"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  27,
+                       "question":  {
+                                        "hi":  "Day Book à¤•à¤¿à¤¸à¥€ Particular period à¤•à¥‡ Voucher types à¤¦à¥‡à¤–à¤¨à¥‡ à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+                                        "en":  "Day Book à¤•à¤¿à¤¸à¥€ Particular period à¤•à¥‡ Voucher types à¤¦à¥‡à¤–à¤¨à¥‡ à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  28,
+                       "question":  {
+                                        "hi":  "Voucher à¤®à¥‡à¤‚ Master Create à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Shortcut?",
+                                        "en":  "Voucher à¤®à¥‡à¤‚ Master Create à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Shortcut?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Alt+C",
+                                                  "Ctrl+C",
+                                                  "Alt+M",
+                                                  "Ctrl+M"
+                                              ],
+                                       "en":  [
+                                                  "Alt+C",
+                                                  "Ctrl+C",
+                                                  "Alt+M",
+                                                  "Ctrl+M"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  29,
+                       "question":  {
+                                        "hi":  "à¤†à¤ª One time à¤®à¥‡à¤‚ Single ledger à¤¯à¤¾ Multi Ledger à¤¬à¤¨à¤¾ à¤¸à¤•à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤",
+                                        "en":  "à¤†à¤ª One time à¤®à¥‡à¤‚ Single ledger à¤¯à¤¾ Multi Ledger à¤¬à¤¨à¤¾ à¤¸à¤•à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  30,
+                       "question":  {
+                                        "hi":  "Bank à¤®à¥‡à¤‚ Cash à¤œà¤®à¤¾ entry à¤•à¥‡ à¤²à¤¿à¤ à¤•à¥Œà¤¨ à¤¸à¤¾ Voucher?",
+                                        "en":  "Bank à¤®à¥‡à¤‚ Cash à¤œà¤®à¤¾ entry à¤•à¥‡ à¤²à¤¿à¤ à¤•à¥Œà¤¨ à¤¸à¤¾ Voucher?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Contra",
+                                                  "Payment",
+                                                  "Cash",
+                                                  "Optional Voucher"
+                                              ],
+                                       "en":  [
+                                                  "Contra",
+                                                  "Payment",
+                                                  "Cash",
+                                                  "Optional Voucher"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  31,
+                       "question":  {
+                                        "hi":  "Multiple Employee Creation screen à¤¸à¥‡ à¤¸à¤­à¥€ Employees à¤•à¥€ Details à¤¦à¤°à¥à¤œ à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€ à¤¹à¥ˆà¤‚à¥¤",
+                                        "en":  "Multiple Employee Creation screen à¤¸à¥‡ à¤¸à¤­à¥€ Employees à¤•à¥€ Details à¤¦à¤°à¥à¤œ à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€ à¤¹à¥ˆà¤‚à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  32,
+                       "question":  {
+                                        "hi":  "20 September à¤¤à¤• 20000 à¤•à¤¾ Due check à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Report?",
+                                        "en":  "20 September à¤¤à¤• 20000 à¤•à¤¾ Due check à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Report?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Purchase Report",
+                                                  "Ledger Outstanding Report",
+                                                  "Sales Report",
+                                                  "Receipt Report"
+                                              ],
+                                       "en":  [
+                                                  "Purchase Report",
+                                                  "Ledger Outstanding Report",
+                                                  "Sales Report",
+                                                  "Receipt Report"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  33,
+                       "question":  {
+                                        "hi":  "Tally à¤®à¥‡à¤‚ Underlined Shortcut key à¤ªà¤° à¤•à¥Œà¤¨ à¤¸à¥€ Key Press à¤•à¤°à¥‡à¤‚à¤—à¥‡?",
+                                        "en":  "Tally à¤®à¥‡à¤‚ Underlined Shortcut key à¤ªà¤° à¤•à¥Œà¤¨ à¤¸à¥€ Key Press à¤•à¤°à¥‡à¤‚à¤—à¥‡?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Alt",
+                                                  "Ctrl",
+                                                  "Del",
+                                                  "Shift"
+                                              ],
+                                       "en":  [
+                                                  "Alt",
+                                                  "Ctrl",
+                                                  "Del",
+                                                  "Shift"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  34,
+                       "question":  {
+                                        "hi":  "Email + Internet Publishing/Upload = ?",
+                                        "en":  "Email + Internet Publishing/Upload = ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Tally Capacity",
+                                                  "Tally E-Capability",
+                                                  "Tally F11 feature",
+                                                  "Tally F12 feature"
+                                              ],
+                                       "en":  [
+                                                  "Tally Capacity",
+                                                  "Tally E-Capability",
+                                                  "Tally F11 feature",
+                                                  "Tally F12 feature"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  35,
+                       "question":  {
+                                        "hi":  "Voucher à¤®à¥‡à¤‚ Booking Date à¤µ Effective Sales Date à¤¦à¥‹à¤¨à¥‹ Defined à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€ à¤¹à¥ˆà¤‚à¥¤",
+                                        "en":  "Voucher à¤®à¥‡à¤‚ Booking Date à¤µ Effective Sales Date à¤¦à¥‹à¤¨à¥‹ Defined à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€ à¤¹à¥ˆà¤‚à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  36,
+                       "question":  {
+                                        "hi":  "à¤•à¥Œà¤¨ Voucher Numbering Method à¤¨à¤¹à¥€à¤‚ à¤¹à¥ˆ?",
+                                        "en":  "à¤•à¥Œà¤¨ Voucher Numbering Method à¤¨à¤¹à¥€à¤‚ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Manual Override",
+                                                  "Multi User Auto",
+                                                  "Predefined",
+                                                  "Automatic"
+                                              ],
+                                       "en":  [
+                                                  "Manual Override",
+                                                  "Multi User Auto",
+                                                  "Predefined",
+                                                  "Automatic"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  37,
+                       "question":  {
+                                        "hi":  "Entry level à¤ªà¤° GST Details override à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥?",
+                                        "en":  "Entry level à¤ªà¤° GST Details override à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "F12 \u003e\u003e GST Classification",
+                                                  "F12 \u003e\u003e Allow GST Changes",
+                                                  "F12 + Allow GST Modification",
+                                                  "F12 + GST Overriding"
+                                              ],
+                                       "en":  [
+                                                  "F12 \u003e\u003e GST Classification",
+                                                  "F12 \u003e\u003e Allow GST Changes",
+                                                  "F12 + Allow GST Modification",
+                                                  "F12 + GST Overriding"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  38,
+                       "question":  {
+                                        "hi":  "TDS Deduction Configuration à¤•à¤¹à¤¾à¤ à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "TDS Deduction Configuration à¤•à¤¹à¤¾à¤ à¤¹à¥‹à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Deductee Master",
+                                                  "Deductor Master",
+                                                  "Duty Ledger",
+                                                  "Expense Ledger"
+                                              ],
+                                       "en":  [
+                                                  "Deductee Master",
+                                                  "Deductor Master",
+                                                  "Duty Ledger",
+                                                  "Expense Ledger"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  39,
+                       "question":  {
+                                        "hi":  "Tally.NET Service à¤¸à¥‡ Company connect à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Option YES à¤•à¤°à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾?",
+                                        "en":  "Tally.NET Service à¤¸à¥‡ Company connect à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Option YES à¤•à¤°à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Allow to Connect Company = Yes",
+                                                  "Allow to Connect Company = No"
+                                              ],
+                                       "en":  [
+                                                  "Allow to Connect Company = Yes",
+                                                  "Allow to Connect Company = No"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  40,
+                       "question":  {
+                                        "hi":  "Tally statutory forms PF, ESIC à¤µ Income tax à¤•à¥‡ Challan print à¤•à¤°à¤¤à¥€ à¤¹à¥ˆà¥¤",
+                                        "en":  "Tally statutory forms PF, ESIC à¤µ Income tax à¤•à¥‡ Challan print à¤•à¤°à¤¤à¥€ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  41,
+                       "question":  {
+                                        "hi":  "à¤µà¤¹ Financial Statement à¤œà¥‹ firm à¤•à¥€ Financial Position à¤¦à¤¿à¤–à¤¾à¤¤à¥€ à¤¹à¥ˆ?",
+                                        "en":  "à¤µà¤¹ Financial Statement à¤œà¥‹ firm à¤•à¥€ Financial Position à¤¦à¤¿à¤–à¤¾à¤¤à¥€ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Balance Sheet",
+                                                  "P\u0026L Account",
+                                                  "Receipts \u0026 Payments Account",
+                                                  "Trial Balance"
+                                              ],
+                                       "en":  [
+                                                  "Balance Sheet",
+                                                  "P\u0026L Account",
+                                                  "Receipts \u0026 Payments Account",
+                                                  "Trial Balance"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  42,
+                       "question":  {
+                                        "hi":  "Sales Return à¤ªà¤° Buyer à¤•à¥‹ à¤•à¥à¤¯à¤¾ à¤¦à¥‡à¤¨à¤¾ à¤œà¤°à¥‚à¤°à¥€ à¤¹à¥ˆ?",
+                                        "en":  "Sales Return à¤ªà¤° Buyer à¤•à¥‹ à¤•à¥à¤¯à¤¾ à¤¦à¥‡à¤¨à¤¾ à¤œà¤°à¥‚à¤°à¥€ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Invoice",
+                                                  "Debit Note",
+                                                  "Credit Note",
+                                                  "à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥‹à¤ˆ à¤¨à¤¹à¥€à¤‚"
+                                              ],
+                                       "en":  [
+                                                  "Invoice",
+                                                  "Debit Note",
+                                                  "Credit Note",
+                                                  "à¤‡à¤¨à¤®à¥‡à¤‚ à¤¸à¥‡ à¤•à¥‹à¤ˆ à¤¨à¤¹à¥€à¤‚"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  43,
+                       "question":  {
+                                        "hi":  "Display Mode à¤®à¥‡à¤‚ Ledger à¤•à¥‹ Edit/Delete à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¥‡à¥¤",
+                                        "en":  "Display Mode à¤®à¥‡à¤‚ Ledger à¤•à¥‹ Edit/Delete à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¥‡à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  44,
+                       "question":  {
+                                        "hi":  "Batch Voucher Report batch wise inward outward à¤¦à¥‹à¤¨à¥‹à¤‚ à¤¦à¤¿à¤–à¤¾à¤¤à¥€ à¤¹à¥ˆà¥¤",
+                                        "en":  "Batch Voucher Report batch wise inward outward à¤¦à¥‹à¤¨à¥‹à¤‚ à¤¦à¤¿à¤–à¤¾à¤¤à¥€ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  45,
+                       "question":  {
+                                        "hi":  "Display mode à¤®à¥‡à¤‚ Group à¤•à¥‹ Edit/Delete à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¥‡à¥¤",
+                                        "en":  "Display mode à¤®à¥‡à¤‚ Group à¤•à¥‹ Edit/Delete à¤¨à¤¹à¥€à¤‚ à¤•à¤° à¤¸à¤•à¤¤à¥‡à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  46,
+                       "question":  {
+                                        "hi":  "Balance Sheet à¤•à¥Œà¤¨à¤¸à¤¾ Fundamental Accounting Equation follow à¤•à¤°à¤¤à¥€ à¤¹à¥ˆ?",
+                                        "en":  "Balance Sheet à¤•à¥Œà¤¨à¤¸à¤¾ Fundamental Accounting Equation follow à¤•à¤°à¤¤à¥€ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Assets = Liability - Equity",
+                                                  "Assets = Liability Ã— Equity",
+                                                  "Assets = Liability / Equity",
+                                                  "Assets = Liability + Equity"
+                                              ],
+                                       "en":  [
+                                                  "Assets = Liability - Equity",
+                                                  "Assets = Liability Ã— Equity",
+                                                  "Assets = Liability / Equity",
+                                                  "Assets = Liability + Equity"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  47,
+                       "question":  {
+                                        "hi":  "Without Mouse à¤œà¤²à¥à¤¦à¥€ Company Create à¤•à¤°à¤¨à¥‡ à¤•à¤¾ Shortcut?",
+                                        "en":  "Without Mouse à¤œà¤²à¥à¤¦à¥€ Company Create à¤•à¤°à¤¨à¥‡ à¤•à¤¾ Shortcut?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Alt+F3",
+                                                  "Ctrl+F3",
+                                                  "Alt+F2",
+                                                  "Alt+F4"
+                                              ],
+                                       "en":  [
+                                                  "Alt+F3",
+                                                  "Ctrl+F3",
+                                                  "Alt+F2",
+                                                  "Alt+F4"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  48,
+                       "question":  {
+                                        "hi":  "Outstanding Wages à¤à¤• Liability à¤¹à¥ˆà¥¤",
+                                        "en":  "Outstanding Wages à¤à¤• Liability à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  49,
+                       "question":  {
+                                        "hi":  "Profit \u0026 Loss Screen à¤ªà¤° Alt+F12 à¤•à¤¿à¤¸à¤•à¥‡ à¤²à¤¿à¤?",
+                                        "en":  "Profit \u0026 Loss Screen à¤ªà¤° Alt+F12 à¤•à¤¿à¤¸à¤•à¥‡ à¤²à¤¿à¤?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Company Features à¤¦à¥‡à¤–à¤¨à¤¾",
+                                                  "Reports Configure à¤•à¤°à¤¨à¤¾",
+                                                  "Date Range set à¤•à¤°à¤¨à¤¾",
+                                                  "Balance Sheet à¤¦à¥‡à¤–à¤¨à¤¾"
+                                              ],
+                                       "en":  [
+                                                  "Company Features à¤¦à¥‡à¤–à¤¨à¤¾",
+                                                  "Reports Configure à¤•à¤°à¤¨à¤¾",
+                                                  "Date Range set à¤•à¤°à¤¨à¤¾",
+                                                  "Balance Sheet à¤¦à¥‡à¤–à¤¨à¤¾"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  50,
+                       "question":  {
+                                        "hi":  "GST à¤®à¥‡à¤‚ Dealer à¤œà¤¿à¤¸à¤•à¤¾ Turnover Threshold à¤¸à¥‡ à¤•à¤® à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾?",
+                                        "en":  "GST à¤®à¥‡à¤‚ Dealer à¤œà¤¿à¤¸à¤•à¤¾ Turnover Threshold à¤¸à¥‡ à¤•à¤® à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Composite",
+                                                  "Registered",
+                                                  "Casual",
+                                                  "Unregistered"
+                                              ],
+                                       "en":  [
+                                                  "Composite",
+                                                  "Registered",
+                                                  "Casual",
+                                                  "Unregistered"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  51,
+                       "question":  {
+                                        "hi":  "Form 26Q à¤¦à¥‡à¤–à¤¨à¥‡ à¤•à¥€ à¤¸à¤¹à¥€ path?",
+                                        "en":  "Form 26Q à¤¦à¥‡à¤–à¤¨à¥‡ à¤•à¥€ à¤¸à¤¹à¥€ path?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Gateway â†’ Display â†’ Statutory Reports â†’ TDS Reports â†’ Form 26Q",
+                                                  "Gateway â†’ Display â†’ Statutory Reports â†’ Trial Balance â†’ Form 26Q",
+                                                  "Gateway â†’ Display â†’ Exception Reports â†’ Form 26Q",
+                                                  "None"
+                                              ],
+                                       "en":  [
+                                                  "Gateway â†’ Display â†’ Statutory Reports â†’ TDS Reports â†’ Form 26Q",
+                                                  "Gateway â†’ Display â†’ Statutory Reports â†’ Trial Balance â†’ Form 26Q",
+                                                  "Gateway â†’ Display â†’ Exception Reports â†’ Form 26Q",
+                                                  "None"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  52,
+                       "question":  {
+                                        "hi":  "à¤¤à¥à¤°à¤‚à¤¤ Payment à¤ªà¤¾à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Seller à¤œà¥‹ Discount à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚?",
+                                        "en":  "à¤¤à¥à¤°à¤‚à¤¤ Payment à¤ªà¤¾à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Seller à¤œà¥‹ Discount à¤¦à¥‡à¤¤à¤¾ à¤¹à¥ˆ à¤‰à¤¸à¥‡ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Trade",
+                                                  "Cash",
+                                                  "Seasonal",
+                                                  "Contractual"
+                                              ],
+                                       "en":  [
+                                                  "Trade",
+                                                  "Cash",
+                                                  "Seasonal",
+                                                  "Contractual"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  53,
+                       "question":  {
+                                        "hi":  "Attendance Voucher Creation Screen à¤®à¥‡à¤‚ Attendance Value Auto Fill à¤¨à¤¹à¥€à¤‚ à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€à¥¤",
+                                        "en":  "Attendance Voucher Creation Screen à¤®à¥‡à¤‚ Attendance Value Auto Fill à¤¨à¤¹à¥€à¤‚ à¤•à¥€ à¤œà¤¾ à¤¸à¤•à¤¤à¥€à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  54,
+                       "question":  {
+                                        "hi":  "Tax Payment à¤•à¤¬ à¤•à¤¿à¤¯à¤¾ à¤œà¤¾ à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "Tax Payment à¤•à¤¬ à¤•à¤¿à¤¯à¤¾ à¤œà¤¾ à¤¸à¤•à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "GSTR1",
+                                                  "GSTR2A",
+                                                  "GSTR3B",
+                                                  "None"
+                                              ],
+                                       "en":  [
+                                                  "GSTR1",
+                                                  "GSTR2A",
+                                                  "GSTR3B",
+                                                  "None"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  55,
+                       "question":  {
+                                        "hi":  "Stock Item report à¤¦à¥‡à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Path?",
+                                        "en":  "Stock Item report à¤¦à¥‡à¤–à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ Path?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Movement Analysis",
+                                                  "Stock Item",
+                                                  "Daily Breakup",
+                                                  "Ratio Analysis"
+                                              ],
+                                       "en":  [
+                                                  "Movement Analysis",
+                                                  "Stock Item",
+                                                  "Daily Breakup",
+                                                  "Ratio Analysis"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  56,
+                       "question":  {
+                                        "hi":  "Sales à¤•à¥‡ Advance Payment record à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Adjustment Method?",
+                                        "en":  "Sales à¤•à¥‡ Advance Payment record à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ Adjustment Method?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Against Reference",
+                                                  "New Reference",
+                                                  "Advance Reference",
+                                                  "On Account"
+                                              ],
+                                       "en":  [
+                                                  "Against Reference",
+                                                  "New Reference",
+                                                  "Advance Reference",
+                                                  "On Account"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  57,
+                       "question":  {
+                                        "hi":  "TDS Claim à¤•à¥‡ à¤²à¤¿à¤ Adjustment Entry à¤•à¤¿à¤¸ voucher à¤®à¥‡à¤‚?",
+                                        "en":  "TDS Claim à¤•à¥‡ à¤²à¤¿à¤ Adjustment Entry à¤•à¤¿à¤¸ voucher à¤®à¥‡à¤‚?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Purchase",
+                                                  "Journal",
+                                                  "Sales",
+                                                  "Contra"
+                                              ],
+                                       "en":  [
+                                                  "Purchase",
+                                                  "Journal",
+                                                  "Sales",
+                                                  "Contra"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  58,
+                       "question":  {
+                                        "hi":  "GST Rounding à¤•à¤¹à¤¾à¤ Configure à¤¹à¥‹à¤¤à¥€ à¤¹à¥ˆ?",
+                                        "en":  "GST Rounding à¤•à¤¹à¤¾à¤ Configure à¤¹à¥‹à¤¤à¥€ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Accounting Ledger",
+                                                  "Stock Master",
+                                                  "Company Tax Features",
+                                                  "Party Add Tax Ledger"
+                                              ],
+                                       "en":  [
+                                                  "Accounting Ledger",
+                                                  "Stock Master",
+                                                  "Company Tax Features",
+                                                  "Party Add Tax Ledger"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  59,
+                       "question":  {
+                                        "hi":  "Income Tax Act à¤•à¥€ à¤•à¥Œà¤¨ à¤¸à¥€ section Rent payment à¤¸à¥‡ related?",
+                                        "en":  "Income Tax Act à¤•à¥€ à¤•à¥Œà¤¨ à¤¸à¥€ section Rent payment à¤¸à¥‡ related?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "192B",
+                                                  "194C",
+                                                  "194I",
+                                                  "194J"
+                                              ],
+                                       "en":  [
+                                                  "192B",
+                                                  "194C",
+                                                  "194I",
+                                                  "194J"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  60,
+                       "question":  {
+                                        "hi":  "à¤¯à¤¦à¤¿ Reports à¤®à¥‡à¤‚ Group Share Use à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚ à¤¤à¥‹ F12 à¤®à¥‡à¤‚ YES à¤•à¤°à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾à¥¤",
+                                        "en":  "à¤¯à¤¦à¤¿ Reports à¤®à¥‡à¤‚ Group Share Use à¤•à¤°à¤¨à¤¾ à¤šà¤¾à¤¹à¤¤à¥‡ à¤¹à¥ˆà¤‚ à¤¤à¥‹ F12 à¤®à¥‡à¤‚ YES à¤•à¤°à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾à¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  61,
+                       "question":  {
+                                        "hi":  "Expense, Loss, Income à¤µ Gain à¤¸à¥‡ related Account à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤²à¤¾à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "Expense, Loss, Income à¤µ Gain à¤¸à¥‡ related Account à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤²à¤¾à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Personal",
+                                                  "Real",
+                                                  "Nominal"
+                                              ],
+                                       "en":  [
+                                                  "Personal",
+                                                  "Real",
+                                                  "Nominal"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  62,
+                       "question":  {
+                                        "hi":  "State à¤µ Central Tax à¤¹à¤®à¥‡à¤¶à¤¾ Integrated Tax à¤•à¥‡ à¤•à¤¿à¤¤à¤¨à¤¾ à¤¹à¤¿à¤¸à¥à¤¸à¤¾ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚?",
+                                        "en":  "State à¤µ Central Tax à¤¹à¤®à¥‡à¤¶à¤¾ Integrated Tax à¤•à¥‡ à¤•à¤¿à¤¤à¤¨à¤¾ à¤¹à¤¿à¤¸à¥à¤¸à¤¾ à¤¹à¥‹à¤¤à¥‡ à¤¹à¥ˆà¤‚?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤†à¤§à¤¾",
+                                                  "à¤¤à¤¿à¤¹à¤¾à¤ˆ",
+                                                  "à¤šà¥Œà¤¥à¤¾à¤ˆ",
+                                                  "à¤ªà¤¾à¤à¤šà¤µà¤¾"
+                                              ],
+                                       "en":  [
+                                                  "à¤†à¤§à¤¾",
+                                                  "à¤¤à¤¿à¤¹à¤¾à¤ˆ",
+                                                  "à¤šà¥Œà¤¥à¤¾à¤ˆ",
+                                                  "à¤ªà¤¾à¤à¤šà¤µà¤¾"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  63,
+                       "question":  {
+                                        "hi":  "Tally.NET Password Reset à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ key?",
+                                        "en":  "Tally.NET Password Reset à¤•à¤°à¤¨à¥‡ à¤¹à¥‡à¤¤à¥ à¤•à¥Œà¤¨ key?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "F5",
+                                                  "F2",
+                                                  "F4",
+                                                  "F9"
+                                              ],
+                                       "en":  [
+                                                  "F5",
+                                                  "F2",
+                                                  "F4",
+                                                  "F9"
+                                              ]
+                                   },
+                       "correct":  2,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  64,
+                       "question":  {
+                                        "hi":  "Sales Return à¤•à¥‡ à¤²à¤¿à¤ Credit Note à¤¬à¤¨à¤¾à¤¤à¥‡ à¤¸à¤®à¤¯ Original Invoice Number à¤¦à¥‡à¤¨à¤¾ à¤œà¤°à¥‚à¤°à¥€ à¤¹à¥ˆà¥¤",
+                                        "en":  "Sales Return à¤•à¥‡ à¤²à¤¿à¤ Credit Note à¤¬à¤¨à¤¾à¤¤à¥‡ à¤¸à¤®à¤¯ Original Invoice Number à¤¦à¥‡à¤¨à¤¾ à¤œà¤°à¥‚à¤°à¥€ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  65,
+                       "question":  {
+                                        "hi":  "GST à¤¸à¥‡ à¤ªà¤¹à¤²à¥‡ Goods à¤ªà¤° à¤•à¥Œà¤¨ à¤¸à¤¾ Tax à¤²à¤¾à¤—à¥‚ à¤¥à¤¾?",
+                                        "en":  "GST à¤¸à¥‡ à¤ªà¤¹à¤²à¥‡ Goods à¤ªà¤° à¤•à¥Œà¤¨ à¤¸à¤¾ Tax à¤²à¤¾à¤—à¥‚ à¤¥à¤¾?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Service Tax",
+                                                  "VAT",
+                                                  "Excise Duty"
+                                              ],
+                                       "en":  [
+                                                  "Service Tax",
+                                                  "VAT",
+                                                  "Excise Duty"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  66,
+                       "question":  {
+                                        "hi":  "Tally ODBC data extract à¤•à¤° Excel reports design à¤®à¥‡à¤‚ à¤®à¤¦à¤¦ à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆà¥¤",
+                                        "en":  "Tally ODBC data extract à¤•à¤° Excel reports design à¤®à¥‡à¤‚ à¤®à¤¦à¤¦ à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "PowerPoint",
+                                                  "Word",
+                                                  "Paint",
+                                                  "Excel"
+                                              ],
+                                       "en":  [
+                                                  "PowerPoint",
+                                                  "Word",
+                                                  "Paint",
+                                                  "Excel"
+                                              ]
+                                   },
+                       "correct":  3,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  67,
+                       "question":  {
+                                        "hi":  "Voucher Class à¤•à¤¿à¤¸à¤•à¥‡ à¤²à¤¿à¤ à¤®à¤¦à¤¦ à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆ?",
+                                        "en":  "Voucher Class à¤•à¤¿à¤¸à¤•à¥‡ à¤²à¤¿à¤ à¤®à¤¦à¤¦ à¤•à¤°à¤¤à¤¾ à¤¹à¥ˆ?"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "Tax ledger auto calculation define à¤•à¤°à¤¨à¥‡ à¤®à¥‡à¤‚",
+                                                  "Default Accounting allocation",
+                                                  "Default Tax Rate",
+                                                  "Default Item master"
+                                              ],
+                                       "en":  [
+                                                  "Tax ledger auto calculation define à¤•à¤°à¤¨à¥‡ à¤®à¥‡à¤‚",
+                                                  "Default Accounting allocation",
+                                                  "Default Tax Rate",
+                                                  "Default Item master"
+                                              ]
+                                   },
+                       "correct":  0,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   },
+                   {
+                       "id":  68,
+                       "question":  {
+                                        "hi":  "Account Payee à¤”à¤° Double Cross line issue cheque same à¤šà¥€à¤œ à¤¹à¥ˆà¥¤",
+                                        "en":  "Account Payee à¤”à¤° Double Cross line issue cheque same à¤šà¥€à¤œ à¤¹à¥ˆà¥¤"
+                                    },
+                       "options":  {
+                                       "hi":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ],
+                                       "en":  [
+                                                  "à¤¸à¤¹à¥€",
+                                                  "à¤—à¤²à¤¤"
+                                              ]
+                                   },
+                       "correct":  1,
+                       "marks":  1,
+                       "difficulty":  "medium"
+                   }
+               ]
+}

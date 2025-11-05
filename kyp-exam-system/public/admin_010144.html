@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - KYP Exam System v2.0</title>
+    <!-- Cache buster: <?php echo time(); ?> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            color: #667eea;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .main-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .login-form {
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #d68910);
+            color: white;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-warning:hover {
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 25px rgba(149, 165, 166, 0.6);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+
+        .card-title {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 5px;
+            gap: 5px;
+        }
+
+        .admin-tab {
+            flex: 1;
+            padding: 18px 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            border-radius: 12px;
+            color: #667eea;
+            position: relative;
+        }
+
+        .admin-tab:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .admin-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .data-list {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .data-item {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-item:hover {
+            background: rgba(102, 126, 234, 0.03);
+        }
+
+        .question-preview {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .option-item {
+            padding: 12px 16px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .option-item:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option-item.correct {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-color: #28a745;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .option-item.correct::after {
+            content: '✓';
+            position: absolute;
+            right: 16px;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .alert {
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert::before {
+            font-size: 24px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 4px solid #28a745;
+        }
+
+        .alert-success::before {
+            content: '✓';
+            color: #28a745;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left: 4px solid #dc3545;
+        }
+
+        .alert-danger::before {
+            content: '⚠';
+            color: #dc3545;
+        }
+
+        .alert-info {
+            color: #004085;
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 4px solid #17a2b8;
+        }
+
+        .alert-info::before {
+            content: 'ℹ';
+            color: #17a2b8;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+            transform: scale(1.01);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .admin-tabs {
+                flex-direction: column;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content" style="display: flex; align-items: center; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                <div class="company-logo" style="
+                    width: 90px; 
+                    height: 90px; 
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    border: 4px solid white;
+                    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+                    animation: logoFloat 6s ease-in-out infinite;
+                ">
+                    <span style="color: white; font-weight: bold; font-size: 18px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); z-index: 2; letter-spacing: 1px;">MEWS</span>
+                    <div style="
+                        position: absolute;
+                        top: 10%;
+                        left: 10%;
+                        width: 80%;
+                        height: 80%;
+                        border: 3px solid rgba(255,255,255,0.3);
+                        border-radius: 50%;
+                        animation: logoSpin 10s linear infinite;
+                    "></div>
+                </div>
+                <div class="header-text" style="text-align: center; flex: 1;">
+                    <h1 style="margin: 0 0 14px 0; font-size: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; letter-spacing: -0.5px;">Examination Control Panel</h1>
+                    <p style="margin: 0; color: #7f8c8d; font-size: 20px; font-weight: 500;">Mithila Education and Welfare Society</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Login Form -->
+            <div id="loginForm" class="login-form">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Admin Login</h3>
+                    </div>
+                    
+                    <div id="loginAlert" class="alert alert-danger hidden"></div>
+                    
+                    <form id="adminLoginForm" autocomplete="off">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required placeholder="Enter username" autocomplete="off">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter password" autocomplete="off">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">Login</button>
+                        
+                        <div style="margin-top: 15px;">
+                            <button type="button" class="btn btn-warning" onclick="showForgotPassword()">
+                                🔑 Forgot Password?
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="/" class="btn btn-secondary">← Back to Exam</a>
+                </div>
+            </div>
+
+            <!-- Forgot Password Modal -->
+            <div id="forgotPasswordModal" class="hidden" style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                backdrop-filter: blur(5px);
+            ">
+                <div style="
+                    background: white;
+                    padding: 40px;
+                    border-radius: 20px;
+                    max-width: 500px;
+                    width: 90%;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    position: relative;
+                ">
+                    <button onclick="closeForgotPassword()" style="
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #999;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        transition: all 0.3s;
+                    " onmouseover="this.style.background='#f0f0f0'; this.style.color='#333'" onmouseout="this.style.background='none'; this.style.color='#999'">
+                        ×
+                    </button>
+                    
+                    <h2 style="margin: 0 0 10px 0; color: #2c3e50;">🔑 Reset Password</h2>
+                    <p style="color: #7f8c8d; margin: 0 0 20px 0;">Answer the security question to reset your password</p>
+                    
+                    <div id="forgotAlert" class="alert alert-info hidden"></div>
+                    
+                    <div style="background: #e8f4fd; border: 2px solid #3498db; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                        <p style="color: #2c3e50; margin: 0; font-size: 15px; font-weight: 500;">
+                            🔒 <strong>Security Question:</strong><br>
+                            <span id="displaySecurityQuestion" style="font-size: 16px; color: #667eea; margin-top: 8px; display: inline-block;">What is the name of the organization?</span>
+                        </p>
+                    </div>
+                    
+                    <form id="forgotPasswordForm">
+                        <div class="form-group">
+                            <label for="forgotSecurityAnswer">Answer to Security Question:</label>
+                            <input type="text" id="forgotSecurityAnswer" required placeholder="Enter your answer (case insensitive)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forgotNewPassword">New Password:</label>
+                            <input type="password" id="forgotNewPassword" required placeholder="Enter new password (min 6 characters)" minlength="6">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="forgotConfirmPassword">Confirm New Password:</label>
+                            <input type="password" id="forgotConfirmPassword" required placeholder="Confirm new password" minlength="6">
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" class="btn btn-warning" style="flex: 1;">
+                                🔓 Reset Password
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="closeForgotPassword()">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="adminDashboard" class="hidden">
+                <!-- Modern Stats Dashboard -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <!-- Total Questions Card -->
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; padding: 25px; color: white; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(102, 126, 234, 0.3)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="font-size: 40px;">📝</div>
+                            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 24px;">📚</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 36px; font-weight: bold; margin-bottom: 5px;" id="totalQuestions">0</div>
+                        <div style="opacity: 0.9; font-size: 14px; letter-spacing: 0.5px;">Total Questions</div>
+                    </div>
+
+                    <!-- Total Students Card -->
+                    <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; padding: 25px; color: white; box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(245, 87, 108, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(245, 87, 108, 0.3)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="font-size: 40px;">👥</div>
+                            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 24px;">🎓</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 36px; font-weight: bold; margin-bottom: 5px;" id="totalStudents">0</div>
+                        <div style="opacity: 0.9; font-size: 14px; letter-spacing: 0.5px;">Total Students</div>
+                    </div>
+
+                    <!-- Total Results Card -->
+                    <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px; padding: 25px; color: white; box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(79, 172, 254, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(79, 172, 254, 0.3)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="font-size: 40px;">📊</div>
+                            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 24px;">📈</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 36px; font-weight: bold; margin-bottom: 5px;" id="totalResults">0</div>
+                        <div style="opacity: 0.9; font-size: 14px; letter-spacing: 0.5px;">Exam Results</div>
+                    </div>
+
+                    <!-- Total Exams Card -->
+                    <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 15px; padding: 25px; color: white; box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(67, 233, 123, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(67, 233, 123, 0.3)'">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="font-size: 40px;">📚</div>
+                            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 24px;">📖</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 36px; font-weight: bold; margin-bottom: 5px;" id="totalExams">0</div>
+                        <div style="opacity: 0.9; font-size: 14px; letter-spacing: 0.5px;">Active Exam</div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="showTab('questions')">
+                        <span style="font-size: 20px; margin-right: 8px;">📝</span>
+                        Questions
+                    </button>
+                    <button class="admin-tab" onclick="showTab('results')">
+                        <span style="font-size: 20px; margin-right: 8px;">📊</span>
+                        Results
+                    </button>
+                    <button class="admin-tab" onclick="showTab('students')">
+                        <span style="font-size: 20px; margin-right: 8px;">👥</span>
+                        Students
+                    </button>
+                    <button class="admin-tab" onclick="showTab('subjects')">
+                        <span style="font-size: 20px; margin-right: 8px;">📚</span>
+                        Exams
+                    </button>
+                    <button class="admin-tab" onclick="showTab('settings')">
+                        <span style="font-size: 20px; margin-right: 8px;">⚙️</span>
+                        Settings
+                    </button>
+                </div>
+
+                <!-- Questions Tab -->
+                <div id="tab-questions" class="admin-content active">
+                    <!-- Question Upload Section -->
+                    <div class="card" style="margin-bottom: 20px;">
+                        <div class="card-header">
+                            <h3 class="card-title">📄 Bulk Upload Questions from PDF/DOC</h3>
+                        </div>
+                        
+                        <div id="uploadAlert" class="alert alert-info hidden"></div>
+                        
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="uploadSubject">Select Exam:</label>
+                                <select id="uploadSubject" required>
+                                    <option value="">-- Select Exam --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="uploadLanguage">Question Language:</label>
+                                <select id="uploadLanguage" required>
+                                    <option value="hi">हिंदी (Hindi)</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="questionFile">Select PDF/DOC File:</label>
+                                <input type="file" id="questionFile" name="questionFile" accept=".pdf,.doc,.docx" required>
+                                <small style="color: #666; display: block; margin-top: 5px;">
+                                    📋 Supported formats: PDF, DOC, DOCX (Max 10MB)<br>
+                                    📝 Format: Each question should have options like A) B) C) D)<br>
+                                    ✅ Answer key can be mentioned as "Answer: A" or "उत्तर: A"<br>
+                                    📖 <a href="/format-guide.html" target="_blank" style="color: #3498db;">View detailed format guide</a>
+                                </small>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">
+                                🚀 Upload & Extract Questions
+                            </button>
+                        </form>
+                        
+                        <div id="uploadProgress" class="hidden" style="margin-top: 15px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 20px; height: 20px; border: 2px solid #3498db; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                                <span>Processing document and extracting questions...</span>
+                            </div>
+                        </div>
+                        
+                        <div id="uploadResults" class="hidden" style="margin-top: 15px;">
+                            <h4>📊 Extraction Results:</h4>
+                            <div id="extractedQuestions"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">➕ Add Single Question Manually</h3>
+                        </div>
+                        
+                        <div id="questionAlert" class="alert alert-success hidden"></div>
+                        
+                        <form id="questionForm">
+                            <div class="form-group">
+                                <label for="questionSubject">Subject:</label>
+                                <select id="questionSubject" required>
+                                    <option value="">-- Select Exam --</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="questionText">Question:</label>
+                                <textarea id="questionText" rows="3" required placeholder="Enter question text..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="option1">Option A:</label>
+                                <input type="text" id="option1" required placeholder="Option A">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="option2">Option B:</label>
+                                <input type="text" id="option2" required placeholder="Option B">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="option3">Option C:</label>
+                                <input type="text" id="option3" required placeholder="Option C">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="option4">Option D:</label>
+                                <input type="text" id="option4" required placeholder="Option D">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="correctOption">Correct Answer:</label>
+                                <select id="correctOption" required>
+                                    <option value="0">Option A</option>
+                                    <option value="1">Option B</option>
+                                    <option value="2">Option C</option>
+                                    <option value="3">Option D</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="questionMarks">Marks:</label>
+                                <input type="number" id="questionMarks" min="1" max="10" value="1" required>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-success">Add Question</button>
+                                <button type="button" class="btn btn-secondary" onclick="clearQuestionForm()">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Manage Questions</h3>
+                        </div>
+                        
+                        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label style="font-weight: bold; margin-bottom: 8px; display: block;">Filter by Exam:</label>
+                                <select id="filterExam" onchange="displayQuestions()" style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 5px;">
+                                    <option value="">All Exams</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button onclick="deleteAllQuestions()" class="btn" style="background: #e74c3c; color: white; display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;">
+                                    <span style="font-size: 1.2em;">🗑️</span>
+                                    Delete All Questions
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="questionsList" class="data-list"></div>
+                    </div>
+                </div>
+
+                <!-- Edit Question Modal -->
+                <div id="editQuestionModal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(5px);">
+                    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #667eea; padding-bottom: 15px;">
+                            <h3 style="margin: 0; color: #667eea;">✏️ Edit Question</h3>
+                            <button onclick="closeEditModal()" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #e74c3c; padding: 0; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s;" onmouseover="this.style.background='#ffe6e6'" onmouseout="this.style.background='none'">×</button>
+                        </div>
+                        
+                        <form id="editQuestionForm">
+                            <input type="hidden" id="editQuestionId">
+                            <input type="hidden" id="editSubjectId">
+                            
+                            <div class="form-group">
+                                <label for="editQuestionText"><strong>Question Text:</strong></label>
+                                <textarea id="editQuestionText" rows="4" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; resize: vertical;" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label><strong>Options:</strong></label>
+                                <input type="text" id="editOption1" placeholder="Option A" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                                <input type="text" id="editOption2" placeholder="Option B" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                                <input type="text" id="editOption3" placeholder="Option C" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                                <input type="text" id="editOption4" placeholder="Option D" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editCorrectOption"><strong>Correct Answer:</strong></label>
+                                <select id="editCorrectOption" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                                    <option value="0">Option A</option>
+                                    <option value="1">Option B</option>
+                                    <option value="2">Option C</option>
+                                    <option value="3">Option D</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editMarks"><strong>Marks:</strong></label>
+                                <input type="number" id="editMarks" min="1" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;" required>
+                            </div>
+
+                            <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 25px;">
+                                <button type="button" onclick="closeEditModal()" class="btn btn-secondary">Cancel</button>
+                                <button type="submit" class="btn btn-success">💾 Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Tab -->
+                <div id="tab-results" class="admin-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Exam Results</h3>
+                        </div>
+                        
+                        <!-- Subject Filter and Export -->
+                        <div style="padding: 20px; background: #f8f9fa; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                            <div>
+                                <label style="font-weight: bold; margin-right: 10px;">Filter by Exam:</label>
+                                <select id="subjectFilter" onchange="filterResultsBySubject()" style="padding: 8px 15px; border: 1px solid #ced4da; border-radius: 5px; font-size: 14px;">
+                                    <option value="all">All Exams</option>
+                                </select>
+                            </div>
+                            <button onclick="exportToExcel()" class="btn btn-success" style="display: inline-flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 1.2em;">📊</span>
+                                Export to Excel
+                            </button>
+                            <button onclick="downloadSurpriseTestResults()" class="btn" style="display: inline-flex; align-items: center; gap: 8px; background: #9b59b6; color: white;">
+                                <span style="font-size: 1.2em;">🎯</span>
+                                Download Surprise Test Results
+                            </button>
+                        </div>
+                        
+                        <div id="resultsList"></div>
+                    </div>
+                </div>
+
+                <!-- Students Tab -->
+                <div id="tab-students" class="admin-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Registered Students</h3>
+                            <button onclick="deleteAllStudents()" class="btn btn-danger" style="margin-left: auto;">
+                                🗑️ Delete All Students
+                            </button>
+                        </div>
+                        
+                        <div id="studentsList"></div>
+                    </div>
+                </div>
+
+                <!-- Exams Tab -->
+                <div id="tab-subjects" class="admin-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">📚 Manage Exams</h3>
+                            <button onclick="showAddSubjectForm()" class="btn btn-primary" style="margin-left: auto;">
+                                ➕ Add New Exam
+                            </button>
+                        </div>
+                        
+                        <!-- Add Subject Form (Hidden by default) -->
+                        <div id="addSubjectForm" style="display: none; padding: 20px; background: #f8f9fa; border-bottom: 2px solid #ddd; margin-bottom: 20px;">
+                            <h4 style="margin-bottom: 15px;">Add New Exam</h4>
+                            <form onsubmit="addSubject(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 800px;">
+                                <div class="form-group">
+                                    <label for="newSubjectName">Exam Name *</label>
+                                    <input type="text" id="newSubjectName" required placeholder="e.g., Mathematics">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newSubjectDuration">Duration (minutes) *</label>
+                                    <input type="number" id="newSubjectDuration" required min="1" placeholder="e.g., 60">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newSubjectDescription">Description</label>
+                                    <input type="text" id="newSubjectDescription" placeholder="Optional description">
+                                </div>
+                                <div class="form-group" style="display: flex; align-items: flex-end; gap: 10px;">
+                                    <button type="submit" class="btn btn-success" style="flex: 1;">✓ Add Exam</button>
+                                    <button type="button" onclick="hideAddSubjectForm()" class="btn btn-secondary" style="flex: 1;">✗ Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="subjectsList"></div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="tab-settings" class="admin-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">🔐 Change Admin Password</h3>
+                        </div>
+                        
+                        <div id="passwordAlert" class="alert alert-success hidden"></div>
+                        
+                        <form id="changePasswordForm" style="max-width: 500px;">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password:</label>
+                                <input type="password" id="currentPassword" required placeholder="Enter current password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newPassword">New Password:</label>
+                                <input type="password" id="newPassword" required placeholder="Enter new password (min 6 characters)" minlength="6">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password:</label>
+                                <input type="password" id="confirmPassword" required placeholder="Confirm new password" minlength="6">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">
+                                🔒 Change Password
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="clearPasswordForm()">
+                                Clear
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">� Security Question Setup</h3>
+                        </div>
+                        
+                        <div id="securityAlert" class="alert alert-info hidden"></div>
+                        
+                        <div style="background: #e8f4fd; border: 2px solid #3498db; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <h4 style="color: #2c3e50; margin: 0 0 10px 0;">ℹ️ About Security Question</h4>
+                            <p style="color: #34495e; margin: 0; line-height: 1.6;">
+                                Set up a security question and answer. This will be used to recover your password if you forget it.<br>
+                                <strong>⚠️ Important:</strong> Keep your answer secret and memorable!
+                            </p>
+                        </div>
+                        
+                        <form id="securityQuestionForm" style="max-width: 500px;">
+                            <div class="form-group">
+                                <label for="newSecurityQuestion">Security Question:</label>
+                                <input type="text" id="newSecurityQuestion" required placeholder="e.g., What is your mother's maiden name?" value="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="newSecurityAnswer">Answer:</label>
+                                <input type="text" id="newSecurityAnswer" required placeholder="Enter answer (case insensitive)">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-success">
+                                💾 Save Security Question
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">🔑 Current Security Settings</h3>
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 12px;">
+                            <p style="margin: 0 0 10px 0;"><strong>Current Security Question:</strong></p>
+                            <p id="currentSecurityQuestion" style="color: #667eea; font-size: 16px; margin: 0; padding: 15px; background: white; border-radius: 8px; border-left: 4px solid #667eea;">
+                                What is the name of the organization?
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">⚠️ Emergency Password Reset</h3>
+                        </div>
+                        
+                        <div id="resetAlert" class="alert alert-info hidden"></div>
+                        
+                        <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <h4 style="color: #856404; margin: 0 0 10px 0;">🔓 Admin Access Only</h4>
+                            <p style="color: #856404; margin: 0; line-height: 1.6;">
+                                This is an emergency reset option. You need to enter your <strong>current password</strong> to use this feature.
+                            </p>
+                        </div>
+                        
+                        <form id="resetPasswordForm" style="max-width: 500px;">
+                            <div class="form-group">
+                                <label for="resetCurrentPassword">Current Admin Password:</label>
+                                <input type="password" id="resetCurrentPassword" required placeholder="Enter current password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="resetNewPassword">New Password:</label>
+                                <input type="password" id="resetNewPassword" required placeholder="Enter new password (min 6 characters)" minlength="6">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="resetConfirmPassword">Confirm New Password:</label>
+                                <input type="password" id="resetConfirmPassword" required placeholder="Confirm new password" minlength="6">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-warning">
+                                🔓 Reset Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Logout -->
+                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6;">
+                    <a href="/" class="btn btn-secondary">← Back to Exam</a>
+                    <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global Variables
+        let isLoggedIn = false;
+        let subjects = [];
+        let allQuestions = {};
+        let securityQuestion = 'What is the name of the organization?';
+        
+        // API Base URL
+        const API_BASE = window.location.origin + '/api';
+        
+        // Load security question from server on page load
+        async function loadSecurityQuestion() {
+            try {
+                const response = await fetch(API_BASE + '/admin/security-question');
+                const data = await response.json();
+                if (data.securityQuestion) {
+                    securityQuestion = data.securityQuestion;
+                }
+            } catch (error) {
+                console.error('Failed to load security question:', error);
+            }
+        }
+        loadSecurityQuestion();
+
+        // Initialize
+        window.addEventListener('load', function() {
+            console.log('Admin panel loading...');
+            try {
+                checkAuth();
+            } catch (error) {
+                console.error('Admin initialization error:', error);
+                showAlert('loginAlert', 'Admin panel failed to initialize: ' + error.message, 'danger');
+            }
+        });
+
+        // Authentication
+        function checkAuth() {
+            const auth = sessionStorage.getItem('admin_auth');
+            if (auth === 'true') {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            isLoggedIn = false;
+        }
+
+        function showDashboard() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            isLoggedIn = true;
+            
+            // Update security question display
+            updateSecurityQuestionDisplay();
+            
+            // Test API connection first
+            testAPIConnection().then(() => {
+                loadDashboardData();
+            }).catch(error => {
+                console.error('API connection failed:', error);
+                showAlert('loginAlert', 'Failed to connect to server API', 'danger');
+            });
+        }
+        
+        function updateSecurityQuestionDisplay() {
+            const currentQuestionElement = document.getElementById('currentSecurityQuestion');
+            const newQuestionInput = document.getElementById('newSecurityQuestion');
+            
+            if (currentQuestionElement) {
+                currentQuestionElement.textContent = securityQuestion;
+            }
+            if (newQuestionInput) {
+                newQuestionInput.value = securityQuestion;
+            }
+        }
+
+        async function testAPIConnection() {
+            try {
+                const response = await fetch(API_BASE + '/subjects');
+                if (!response.ok) {
+                    throw new Error('API response not ok');
+                }
+                console.log('API connection successful');
+                return true;
+            } catch (error) {
+                console.error('API test failed:', error);
+                throw error;
+            }
+        }
+
+        // Login form
+        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    sessionStorage.setItem('admin_auth', 'true');
+                    if (data.securityQuestion) {
+                        securityQuestion = data.securityQuestion;
+                    }
+                    showDashboard();
+                } else {
+                    showAlert('loginAlert', '❌ ' + (data.error || 'Invalid username or password!'), 'danger');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('loginAlert', '❌ Login failed. Please try again.', 'danger');
+            }
+        });
+        
+        // Change Password Form
+        document.getElementById('changePasswordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword.length < 6) {
+                showAlert('passwordAlert', '❌ New password must be at least 6 characters!', 'danger');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showAlert('passwordAlert', '❌ New passwords do not match!', 'danger');
+                return;
+            }
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ currentPassword, newPassword })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert('passwordAlert', '✅ Password changed successfully on server!', 'success');
+                    clearPasswordForm();
+                } else {
+                    showAlert('passwordAlert', '❌ ' + (data.error || 'Failed to change password'), 'danger');
+                }
+            } catch (error) {
+                console.error('Change password error:', error);
+                showAlert('passwordAlert', '❌ Failed to change password. Please try again.', 'danger');
+            }
+        });
+        
+        // Emergency Reset Password Form (in Settings)
+        document.getElementById('resetPasswordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('resetCurrentPassword').value;
+            const newPassword = document.getElementById('resetNewPassword').value;
+            const confirmPassword = document.getElementById('resetConfirmPassword').value;
+            
+            if (newPassword.length < 6) {
+                showAlert('resetAlert', '❌ New password must be at least 6 characters!', 'danger');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showAlert('resetAlert', '❌ Passwords do not match!', 'danger');
+                return;
+            }
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ currentPassword, newPassword })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert('resetAlert', '✅ Password reset successfully on server!', 'success');
+                    document.getElementById('resetPasswordForm').reset();
+                } else {
+                    showAlert('resetAlert', '❌ ' + (data.error || 'Failed to reset password'), 'danger');
+                }
+            } catch (error) {
+                console.error('Reset password error:', error);
+                showAlert('resetAlert', '❌ Failed to reset password. Please try again.', 'danger');
+            }
+        });
+        
+        // Forgot Password Form (in Modal)
+        document.getElementById('forgotPasswordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const securityAnswer = document.getElementById('forgotSecurityAnswer').value.trim();
+            const newPassword = document.getElementById('forgotNewPassword').value;
+            const confirmPassword = document.getElementById('forgotConfirmPassword').value;
+            
+            if (newPassword.length < 6) {
+                showAlert('forgotAlert', '❌ New password must be at least 6 characters!', 'danger');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showAlert('forgotAlert', '❌ Passwords do not match!', 'danger');
+                return;
+            }
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ securityAnswer, newPassword })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showAlert('forgotAlert', '✅ Password reset successfully! You can now login.', 'success');
+                    
+                    setTimeout(() => {
+                        closeForgotPassword();
+                        document.getElementById('password').value = '';
+                    }, 2000);
+                } else {
+                    showAlert('forgotAlert', '❌ ' + (data.error || 'Failed to reset password'), 'danger');
+                }
+            } catch (error) {
+                console.error('Reset password error:', error);
+                showAlert('forgotAlert', '❌ Failed to reset password. Please try again.', 'danger');
+            }
+        });
+        
+        // Security Question Form
+        document.getElementById('securityQuestionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const currentPassword = prompt('Enter your current password to update security settings:');
+            if (!currentPassword) {
+                showAlert('securityAlert', '❌ Password is required to update security settings!', 'danger');
+                return;
+            }
+            
+            const newQuestion = document.getElementById('newSecurityQuestion').value.trim();
+            const newAnswer = document.getElementById('newSecurityAnswer').value.trim();
+            
+            if (newQuestion.length < 5) {
+                showAlert('securityAlert', '❌ Security question must be at least 5 characters!', 'danger');
+                return;
+            }
+            
+            if (newAnswer.length < 3) {
+                showAlert('securityAlert', '❌ Answer must be at least 3 characters!', 'danger');
+                return;
+            }
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/update-security', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        currentPassword,
+                        securityQuestion: newQuestion, 
+                        securityAnswer: newAnswer 
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    securityQuestion = newQuestion;
+                    document.getElementById('currentSecurityQuestion').textContent = securityQuestion;
+                    showAlert('securityAlert', '✅ Security question updated successfully on server!', 'success');
+                    document.getElementById('securityQuestionForm').reset();
+                } else {
+                    showAlert('securityAlert', '❌ ' + (data.error || 'Failed to update security question'), 'danger');
+                }
+            } catch (error) {
+                console.error('Update security error:', error);
+                showAlert('securityAlert', '❌ Failed to update security question. Please try again.', 'danger');
+            }
+        });
+        
+        function showForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
+            // Update the security question display in modal
+            document.getElementById('displaySecurityQuestion').textContent = securityQuestion;
+        }
+        
+        function closeForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').reset();
+            document.getElementById('forgotAlert').classList.add('hidden');
+        }
+        
+        function clearPasswordForm() {
+            document.getElementById('changePasswordForm').reset();
+        }
+
+        function logout() {
+            sessionStorage.removeItem('admin_auth');
+            showLogin();
+        }
+
+        // Utility Functions
+        async function apiCall(endpoint, options = {}) {
+            try {
+                const response = await fetch(API_BASE + endpoint, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+
+                if (!response.ok) {
+                    const error = await response.json().catch(() => ({}));
+                    throw new Error(error.error || `HTTP ${response.status}`);
+                }
+
+                return response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
+        }
+
+        function showAlert(elementId, message, type = 'info') {
+            const alert = document.getElementById(elementId);
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.classList.remove('hidden');
+            setTimeout(() => alert.classList.add('hidden'), 5000);
+        }
+
+        // Tab Management
+        function showTab(tabName) {
+            document.querySelectorAll('.admin-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            event.target.classList.add('active');
+            
+            switch(tabName) {
+                case 'questions':
+                    loadQuestions();
+                    break;
+                case 'results':
+                    loadResults();
+                    break;
+                case 'students':
+                    loadStudents();
+                    break;
+                case 'subjects':
+                    loadSubjectsManagement();
+                    break;
+                case 'settings':
+                    // Settings tab - no data to load
+                    break;
+            }
+        }
+
+        // Dashboard Functions
+        async function loadDashboardData() {
+            try {
+                subjects = await apiCall('/api/subjects');
+                allQuestions = await apiCall('/admin/questions');
+                const results = await apiCall('/admin/results');
+                
+                // Update stats cards with animation
+                updateStatCard('totalQuestions', Object.values(allQuestions).flat().length);
+                updateStatCard('totalSubjects', subjects.length);
+                updateStatCard('totalResults', results.length);
+                updateStatCard('totalStudents', new Set(results.map(r => r.studentEmail)).size);
+
+                populateSubjectDropdowns();
+                loadQuestions();
+            } catch (error) {
+                console.error('Failed to load dashboard data:', error);
+            }
+        }
+
+        function updateStatCard(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let currentValue = 0;
+            const duration = 1000; // 1 second
+            const increment = targetValue / (duration / 16); // 60fps
+            
+            const animate = () => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    element.textContent = targetValue;
+                } else {
+                    element.textContent = Math.floor(currentValue);
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            animate();
+        }
+
+        function populateSubjectDropdowns() {
+            const dropdowns = ['questionSubject', 'filterSubject', 'uploadSubject'];
+
+            dropdowns.forEach(id => {
+                const select = document.getElementById(id);
+                if (!select) return;
+                const currentValue = select.value;
+                
+                select.innerHTML = id.includes('filter') ? 
+                    '<option value="">All Exams</option>' : 
+                    '<option value="">-- Select Exam --</option>';
+
+                subjects.forEach(subject => {
+                    const option = document.createElement('option');
+                    option.value = subject.id;
+                    option.textContent = subject.name;
+                    select.appendChild(option);
+                });
+                
+                select.value = currentValue;
+            });
+        }
+
+        // Question Management
+        document.getElementById('questionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                subjectId: document.getElementById('questionSubject').value,
+                question: document.getElementById('questionText').value.trim(),
+                options: [
+                    document.getElementById('option1').value.trim(),
+                    document.getElementById('option2').value.trim(),
+                    document.getElementById('option3').value.trim(),
+                    document.getElementById('option4').value.trim()
+                ],
+                correct: parseInt(document.getElementById('correctOption').value),
+                marks: parseInt(document.getElementById('questionMarks').value),
+                difficulty: 'medium'
+            };
+            
+            if (!formData.subjectId || !formData.question || formData.options.some(opt => !opt)) {
+                showAlert('questionAlert', 'Please fill all fields!', 'danger');
+                return;
+            }
+            
+            try {
+                await apiCall('/admin/questions', {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
+                
+                showAlert('questionAlert', 'Question added successfully!', 'success');
+                clearQuestionForm();
+                loadQuestions();
+                
+            } catch (error) {
+                showAlert('questionAlert', 'Failed to add question: ' + error.message, 'danger');
+            }
+        });
+
+        // File Upload Form Handler
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const fileInput = document.getElementById('questionFile');
+            const examSelect = document.getElementById('uploadExam');
+            const languageSelect = document.getElementById('uploadLanguage');
+            
+            if (!fileInput.files[0]) {
+                showAlert('uploadAlert', 'Please select a file!', 'danger');
+                return;
+            }
+            
+            if (!examSelect.value) {
+                showAlert('uploadAlert', 'Please select an exam!', 'danger');
+                return;
+            }
+            
+            formData.append('questionFile', fileInput.files[0]);
+            formData.append('examId', examSelect.value);
+            formData.append('language', languageSelect.value);
+            
+            // Show progress
+            document.getElementById('uploadProgress').classList.remove('hidden');
+            document.getElementById('uploadResults').classList.add('hidden');
+            showAlert('uploadAlert', 'Uploading and processing file...', 'info');
+            
+            try {
+                const response = await fetch(API_BASE + '/admin/upload-questions', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                // Hide progress
+                document.getElementById('uploadProgress').classList.add('hidden');
+                
+                if (result.success) {
+                    showAlert('uploadAlert', 
+                        `✅ Success! ${result.questionsAdded} questions imported successfully!`, 
+                        'success');
+                    
+                    // Show extracted questions preview
+                    displayExtractedQuestions(result.questions);
+                    
+                    // Clear form and reload questions
+                    document.getElementById('uploadForm').reset();
+                    loadQuestions();
+                    
+                } else {
+                    showAlert('uploadAlert', 
+                        `❌ Error: ${result.error}`, 
+                        'danger');
+                    
+                    // Show debug info if available
+                    if (result.extractedText) {
+                        console.log('Extracted text preview:', result.extractedText);
+                    }
+                }
+                
+            } catch (error) {
+                document.getElementById('uploadProgress').classList.add('hidden');
+                showAlert('uploadAlert', 
+                    `❌ Upload failed: ${error.message}`, 
+                    'danger');
+                console.error('Upload error:', error);
+            }
+        });
+
+        function displayExtractedQuestions(questions) {
+            const resultsDiv = document.getElementById('extractedQuestions');
+            const resultsContainer = document.getElementById('uploadResults');
+            
+            if (questions && questions.length > 0) {
+                let html = '<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 10px;">';
+                html += `<p><strong>📊 ${questions.length} questions extracted:</strong></p>`;
+                html += '<ul style="margin-left: 20px;">';
+                
+                questions.forEach((q, index) => {
+                    const questionPreview = q.question.length > 100 ? 
+                        q.question.substring(0, 100) + '...' : q.question;
+                    html += `<li><strong>Q${index + 1}:</strong> ${questionPreview} (${q.optionsCount} options)</li>`;
+                });
+                
+                html += '</ul></div>';
+                resultsDiv.innerHTML = html;
+                resultsContainer.classList.remove('hidden');
+            }
+        }
+
+        function clearQuestionForm() {
+            document.getElementById('questionForm').reset();
+            document.getElementById('questionMarks').value = '1';
+        }
+
+        async function loadQuestions() {
+            try {
+                allQuestions = await apiCall('/admin/questions');
+                displayQuestions();
+            } catch (error) {
+                document.getElementById('questionsList').innerHTML = '<p>Failed to load questions.</p>';
+            }
+        }
+
+        function displayQuestions() {
+            const filterSubject = document.getElementById('filterSubject').value;
+            const container = document.getElementById('questionsList');
+            
+            let questionsToShow = [];
+            
+            if (filterSubject && filterSubject !== '') {
+                if (allQuestions[filterSubject]) {
+                    questionsToShow = allQuestions[filterSubject].map(q => ({...q, subjectId: filterSubject}));
+                }
+            } else {
+                Object.keys(allQuestions).forEach(subjectId => {
+                    allQuestions[subjectId].forEach(q => {
+                        questionsToShow.push({...q, subjectId});
+                    });
+                });
+            }
+            
+            if (questionsToShow.length === 0) {
+                container.innerHTML = '<p>No questions found.</p>';
+                return;
+            }
+            
+            const html = questionsToShow.map(question => {
+                const subject = subjects.find(s => s.id === question.subjectId);
+                
+                // Handle bilingual questions
+                let questionText, questionOptions;
+                
+                if (typeof question.question === 'object' && question.question !== null) {
+                    // Bilingual format - show both languages
+                    questionText = `
+                        <div><strong>Hindi:</strong> ${question.question.hi || 'N/A'}</div>
+                        <div><strong>English:</strong> ${question.question.en || 'N/A'}</div>
+                    `;
+                } else {
+                    questionText = question.question || 'Question text missing';
+                }
+                
+                if (typeof question.options === 'object' && !Array.isArray(question.options) && question.options !== null) {
+                    // Bilingual format
+                    const hiOptions = question.options.hi || [];
+                    const enOptions = question.options.en || [];
+                    questionOptions = `
+                        <div style="margin-bottom: 10px;">
+                            <strong>Hindi Options:</strong>
+                            ${hiOptions.map((option, index) => `
+                                <div class="option-item ${index === question.correct ? 'correct' : ''}">
+                                    ${String.fromCharCode(65 + index)}) ${option}
+                                    ${index === question.correct ? ' ✓' : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div>
+                            <strong>English Options:</strong>
+                            ${enOptions.map((option, index) => `
+                                <div class="option-item ${index === question.correct ? 'correct' : ''}">
+                                    ${String.fromCharCode(65 + index)}) ${option}
+                                    ${index === question.correct ? ' ✓' : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else if (Array.isArray(question.options)) {
+                    // Simple array format
+                    questionOptions = question.options.map((option, index) => `
+                        <div class="option-item ${index === question.correct ? 'correct' : ''}">
+                            ${String.fromCharCode(65 + index)}) ${option}
+                            ${index === question.correct ? ' ✓' : ''}
+                        </div>
+                    `).join('');
+                } else {
+                    questionOptions = '<div>Options not available</div>';
+                }
+                
+                return `
+                    <div class="data-item">
+                        <div class="question-preview">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                                <div>
+                                    <strong>Subject:</strong> ${subject?.name || 'Unknown'}<br>
+                                    <strong>Question ID:</strong> ${question.id}<br>
+                                    <strong>Marks:</strong> ${question.marks}
+                                </div>
+                                <div style="display: flex; gap: 10px;">
+                                    <button class="btn btn-primary btn-sm" onclick='editQuestion(${JSON.stringify(question).replace(/'/g, "&apos;")})' style="background: #3498db;">
+                                        ✏️ Edit
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteQuestion('${question.subjectId}', ${question.id})">
+                                        🗑️ Delete
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <strong>Question:</strong><br>
+                                ${questionText}
+                            </div>
+                            
+                            <div>
+                                ${questionOptions}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = html;
+        }
+
+        function editQuestion(question) {
+            // Show modal
+            document.getElementById('editQuestionModal').classList.remove('hidden');
+            
+            // Fill form with question data
+            document.getElementById('editQuestionId').value = question.id;
+            document.getElementById('editSubjectId').value = question.subjectId;
+            
+            // Handle bilingual or simple question text
+            let questionText = '';
+            if (typeof question.question === 'object' && question.question !== null) {
+                // For bilingual, show English (you can modify to show both)
+                questionText = question.question.en || question.question.hi || '';
+            } else {
+                questionText = question.question || '';
+            }
+            document.getElementById('editQuestionText').value = questionText;
+            
+            // Handle bilingual or simple options
+            let options = [];
+            if (typeof question.options === 'object' && !Array.isArray(question.options)) {
+                // Bilingual format - use English options
+                options = question.options.en || question.options.hi || ['', '', '', ''];
+            } else if (Array.isArray(question.options)) {
+                options = question.options;
+            } else {
+                options = ['', '', '', ''];
+            }
+            
+            document.getElementById('editOption1').value = options[0] || '';
+            document.getElementById('editOption2').value = options[1] || '';
+            document.getElementById('editOption3').value = options[2] || '';
+            document.getElementById('editOption4').value = options[3] || '';
+            
+            document.getElementById('editCorrectOption').value = question.correct || 0;
+            document.getElementById('editMarks').value = question.marks || 1;
+        }
+
+        function closeEditModal() {
+            document.getElementById('editQuestionModal').classList.add('hidden');
+        }
+
+        // Handle edit form submission
+        document.getElementById('editQuestionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const questionId = document.getElementById('editQuestionId').value;
+            const subjectId = document.getElementById('editSubjectId').value;
+            
+            const updatedQuestion = {
+                id: parseInt(questionId),
+                question: document.getElementById('editQuestionText').value,
+                options: [
+                    document.getElementById('editOption1').value,
+                    document.getElementById('editOption2').value,
+                    document.getElementById('editOption3').value,
+                    document.getElementById('editOption4').value
+                ],
+                correct: parseInt(document.getElementById('editCorrectOption').value),
+                marks: parseInt(document.getElementById('editMarks').value)
+            };
+            
+            try {
+                await apiCall(`/admin/questions/${subjectId}/${questionId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(updatedQuestion)
+                });
+                
+                alert('✅ Question updated successfully!');
+                closeEditModal();
+                loadQuestions();
+            } catch (error) {
+                alert('❌ Failed to update question: ' + error.message);
+            }
+        });
+
+        async function deleteQuestion(subjectId, questionId) {
+            if (!confirm('Are you sure you want to delete this question?')) return;
+            
+            try {
+                await apiCall(`/admin/questions/${subjectId}/${questionId}`, { method: 'DELETE' });
+                loadQuestions();
+            } catch (error) {
+                alert('Failed to delete question: ' + error.message);
+            }
+        }
+
+
+        async function deleteAllQuestions() {
+            const subjectId = document.getElementById('filterSubject').value;
+            
+            if (!subjectId) {
+                alert('⚠️ Please select a subject first!');
+                return;
+            }
+
+            // Get exam name for confirmation
+            const subject = subjects.find(s => s.id === subjectId);
+            const subjectName = subject ? subject.name : subjectId;
+
+            // Count questions for this exam
+            const questionsCount = allQuestions[subjectId] ? allQuestions[subjectId].length : 0;
+            
+            if (questionsCount === 0) {
+                alert('ℹ️ No questions found for this exam!');
+                return;
+            }
+            
+            // Double confirmation
+            const firstConfirm = confirm(`⚠️ WARNING: You are about to delete ALL ${questionsCount} questions from "${subjectName}"!
+
+This action CANNOT be undone!
+
+Are you sure?`);
+            
+            if (!firstConfirm) return;
+            
+            const secondConfirm = confirm(`🚨 FINAL CONFIRMATION:
+
+Delete ${questionsCount} questions from "${subjectName}"?
+
+Type YES in your mind and click OK to proceed.`);
+            
+            if (!secondConfirm) return;
+            
+            try {
+                // Call API to delete all questions for this subject
+                const response = await apiCall(`/admin/questions/${subjectId}/delete-all`, { 
+                    method: 'DELETE' 
+                });
+                
+                alert(`✅ Successfully deleted ${questionsCount} questions from "${subjectName}"!`);
+                loadQuestions();
+                
+            } catch (error) {
+                alert('❌ Failed to delete questions: ' + error.message);
+                console.error('Delete all error:', error);
+            }
+        }
+
+        // Results Management
+        async function loadResults() {
+            try {
+                const results = await apiCall('/admin/results');
+                displayResults(results);
+            } catch (error) {
+                document.getElementById('resultsList').innerHTML = '<p>Failed to load results.</p>';
+            }
+        }
+
+        let allResults = []; // Store all results globally
+        
+        function displayResults(results) {
+            allResults = results; // Save for filtering
+            
+            // Populate subject filter dropdown
+            const examFilter = document.getElementById('examFilter');
+            if (examFilter) {
+                const examOptions = ['<option value="all">All Exams</option>'];
+                subjects.forEach(subject => {
+                    const count = results.filter(r => r.examId === subject.id).length;
+                    if (count > 0) {
+                        examOptions.push(`<option value="${subject.id}">${subject.shortName} (${count})</option>`);
+                    }
+                });
+                examFilter.innerHTML = examOptions.join('');
+            }
+            
+            renderResults(results);
+        }
+        
+        function filterResultsBySubject() {
+            const selectedSubject = document.getElementById('subjectFilter').value;
+            let filteredResults = allResults;
+            
+            if (selectedSubject !== 'all') {
+                filteredResults = allResults.filter(r => r.subjectId === selectedSubject);
+            }
+            
+            renderResults(filteredResults);
+        }
+        
+        function renderResults(results) {
+            const container = document.getElementById('resultsList');
+            
+            if (results.length === 0) {
+                container.innerHTML = '<div style="padding: 40px; text-align: center; color: #666;">No results found for selected filter.</div>';
+                return;
+            }
+            
+            results.sort((a, b) => new Date(b.submissionTime) - new Date(a.submissionTime));
+            
+            // Group by subject
+            const groupedBySubject = {};
+            results.forEach(result => {
+                if (!groupedBySubject[result.subjectId]) {
+                    groupedBySubject[result.subjectId] = [];
+                }
+                groupedBySubject[result.subjectId].push(result);
+            });
+            
+            let html = '';
+            
+            // Render each exam separately
+            Object.keys(groupedBySubject).forEach(subjectId => {
+                const subject = subjects.find(s => s.id === subjectId);
+                const subjectResults = groupedBySubject[subjectId];
+
+                html += `
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; border-radius: 8px 8px 0 0; margin: 0;">
+                            ${subject?.name || 'Unknown Exam'} 
+                            <span style="float: right; font-size: 0.9em; opacity: 0.9;">${subjectResults.length} Result${subjectResults.length !== 1 ? 's' : ''}</span>
+                        </h3>
+                        <table class="data-table" style="margin-top: 0; border-radius: 0 0 8px 8px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: #f8f9fa;">
+                                    <th>Student Name</th>
+                                    <th>Score</th>
+                                    <th>Percentage</th>
+                                    <th>Time Spent</th>
+                                    <th>Submission Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${subjectResults.map(result => `
+                                    <tr>
+                                        <td>
+                                            <strong>${result.student.name}</strong><br>
+                                            <small style="color: #666;">${result.student.email}</small><br>
+                                            <small style="color: #999;">📱 ${result.student.mobile || 'N/A'}</small>
+                                        </td>
+                                        <td>
+                                            <strong style="font-size: 1.1em;">${result.obtainedMarks}/${result.totalMarks}</strong><br>
+                                            <small style="color: #666;">${result.correctAnswers}/${result.totalQuestions} correct</small>
+                                        </td>
+                                        <td>
+                                            <span style="
+                                                display: inline-block;
+                                                padding: 5px 15px;
+                                                border-radius: 20px;
+                                                font-weight: bold;
+                                                font-size: 1.1em;
+                                                background: ${result.percentage >= 60 ? '#d4edda' : '#f8d7da'};
+                                                color: ${result.percentage >= 60 ? '#155724' : '#721c24'};
+                                            ">
+                                                ${result.percentage}%
+                                            </span>
+                                        </td>
+                                        <td>${formatTime(result.timeSpent)}</td>
+                                        <td>${new Date(result.submissionTime).toLocaleString('en-IN', {
+                                            day: '2-digit',
+                                            month: 'short',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function formatTime(seconds) {
+            if (!seconds) return 'N/A';
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}m ${secs}s`;
+        }
+
+        // Export to Excel Function
+        function exportToExcel() {
+            const selectedSubject = document.getElementById('subjectFilter').value;
+            let resultsToExport = allResults;
+            
+            if (selectedSubject !== 'all') {
+                resultsToExport = allResults.filter(r => r.subjectId === selectedSubject);
+            }
+            
+            if (resultsToExport.length === 0) {
+                alert('No results to export!');
+                return;
+            }
+            
+            // Sort by percentage (descending - topper first)
+            resultsToExport.sort((a, b) => b.percentage - a.percentage);
+            
+            // Prepare Excel data
+            let csvContent = '\uFEFF'; // UTF-8 BOM for proper encoding
+            
+            // Add title and export info
+            csvContent += `KYP Exam System - Results Report\n`;
+            csvContent += `Export Date: ${new Date().toLocaleString('en-IN')}\n`;
+            csvContent += `Exam: ${selectedSubject === 'all' ? 'All Exams' : subjects.find(s => s.id === selectedSubject)?.name || 'Unknown'}\n`;
+            csvContent += `Total Students: ${resultsToExport.length}\n\n`;
+            
+            // Header row
+            csvContent += 'Rank,Student Name,Email,Mobile,Exam,Total Questions,Questions Attempted,Correct Answers,Wrong Answers,Not Attempted,Obtained Marks,Total Marks,Percentage (%),Time Spent,Result,Submission Date\n';
+            
+            // Data rows
+            resultsToExport.forEach((result, index) => {
+                const subject = subjects.find(s => s.id === result.examId);
+                const rank = index + 1;
+                const wrongAnswers = result.totalQuestions - result.correctAnswers;
+                const attempted = result.totalQuestions; // Assuming all attempted for now
+                const notAttempted = 0;
+                const resultStatus = result.percentage >= 60 ? 'PASS' : 'FAIL';
+                const timeSpent = formatTime(result.timeSpent);
+                
+                // Escape commas and quotes in text fields
+                const escapeCsv = (text) => {
+                    if (!text) return '';
+                    text = String(text);
+                    if (text.includes(',') || text.includes('"') || text.includes('\n')) {
+                        return `"${text.replace(/"/g, '""')}"`;
+                    }
+                    return text;
+                };
+                
+                csvContent += `${rank},`;
+                csvContent += `${escapeCsv(result.student.name)},`;
+                csvContent += `${escapeCsv(result.student.email)},`;
+                csvContent += `${escapeCsv(result.student.mobile || 'N/A')},`;
+                csvContent += `${escapeCsv(subject?.shortName || 'Unknown')},`;
+                csvContent += `${result.totalQuestions},`;
+                csvContent += `${attempted},`;
+                csvContent += `${result.correctAnswers},`;
+                csvContent += `${wrongAnswers},`;
+                csvContent += `${notAttempted},`;
+                csvContent += `${result.obtainedMarks},`;
+                csvContent += `${result.totalMarks},`;
+                csvContent += `${result.percentage},`;
+                csvContent += `${escapeCsv(timeSpent)},`;
+                csvContent += `${resultStatus},`;
+                csvContent += `${new Date(result.submissionTime).toLocaleString('en-IN')}\n`;
+            });
+            
+            // Add summary statistics
+            csvContent += `\n\nSUMMARY STATISTICS\n`;
+            csvContent += `Total Students,${resultsToExport.length}\n`;
+            csvContent += `Passed Students (>=60%),${resultsToExport.filter(r => r.percentage >= 60).length}\n`;
+            csvContent += `Failed Students (<60%),${resultsToExport.filter(r => r.percentage < 60).length}\n`;
+            csvContent += `Average Percentage,${(resultsToExport.reduce((sum, r) => sum + r.percentage, 0) / resultsToExport.length).toFixed(2)}%\n`;
+            csvContent += `Highest Score,${Math.max(...resultsToExport.map(r => r.percentage))}%\n`;
+            csvContent += `Lowest Score,${Math.min(...resultsToExport.map(r => r.percentage))}%\n`;
+            
+            // Create blob and download
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            const filename = selectedExam === 'all' 
+                ? `KYP_All_Results_${new Date().toISOString().slice(0,10)}.csv`
+                : `KYP_${exams.find(s => s.id === selectedExam)?.shortName.replace(/\s+/g, '_')}_Results_${new Date().toISOString().slice(0,10)}.csv`;
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message
+            alert(`✓ Results exported successfully!\n\nFile: ${filename}\nTotal Students: ${resultsToExport.length}\nTopper: ${resultsToExport[0].student.name} (${resultsToExport[0].percentage}%)`);
+        }
+
+        // Student Management
+        async function loadStudents() {
+            try {
+                const students = await apiCall('/admin/students');
+                displayStudents(students);
+            } catch (error) {
+                document.getElementById('studentsList').innerHTML = '<p>Failed to load students.</p>';
+            }
+        }
+
+        function displayStudents(students) {
+            const container = document.getElementById('studentsList');
+            
+            if (students.length === 0) {
+                container.innerHTML = '<p>No registered students found.</p>';
+                return;
+            }
+            
+            const html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Registration Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${students.map(student => `
+                            <tr>
+                                <td><strong>${student.name}</strong></td>
+                                <td>${student.email}</td>
+                                <td>${student.mobile}</td>
+                                <td>${new Date(student.registrationTime).toLocaleString()}</td>
+                                <td>
+                                    <button onclick="deleteStudent('${student.id}', '${student.name}')" 
+                                            class="btn btn-danger" 
+                                            style="padding: 5px 10px; font-size: 12px;">
+                                        🗑️ Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        async function deleteStudent(studentId, studentName) {
+            const confirmMsg = `Are you sure you want to delete student "${studentName}"?\n\nThis action cannot be undone.`;
+            
+            if (!confirm(confirmMsg)) {
+                return;
+            }
+            
+            try {
+                const result = await apiCall(`/admin/students/${studentId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (result.success) {
+                    alert('✓ Student deleted successfully!');
+                    await loadStudents(); // Reload the list
+                    await loadDashboardStats(); // Update stats
+                } else {
+                    alert('❌ Failed to delete student');
+                }
+            } catch (error) {
+                console.error('Delete student error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        async function deleteAllStudents() {
+            const firstConfirm = confirm('⚠️ WARNING: This will delete ALL registered students!\n\nAre you absolutely sure?');
+            
+            if (!firstConfirm) {
+                return;
+            }
+            
+            const secondConfirm = confirm('⚠️ FINAL CONFIRMATION\n\nThis action CANNOT be undone!\n\nType YES in your mind and click OK to proceed.');
+            
+            if (!secondConfirm) {
+                return;
+            }
+            
+            try {
+                const result = await apiCall('/admin/students/delete-all/confirm', {
+                    method: 'DELETE'
+                });
+                
+                if (result.success) {
+                    alert('✓ All students deleted successfully!');
+                    await loadStudents(); // Reload the empty list
+                    await loadDashboardStats(); // Update stats
+                } else {
+                    alert('❌ Failed to delete students');
+                }
+            } catch (error) {
+                console.error('Delete all students error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        // Subjects Management Functions
+        async function loadSubjectsManagement() {
+            console.log('🔵 loadSubjectsManagement called');
+            try {
+                console.log('🔵 Calling API: /api/subjects');
+                const subjectsData = await apiCall('/api/subjects');
+                console.log('🔵 Received subjects:', subjectsData);
+                subjects = subjectsData; // Update global variable
+                console.log('🔵 Global subjects updated:', subjects);
+                displaySubjectsManagement(subjectsData);
+                populateSubjectDropdowns(); // Update all dropdowns
+            } catch (error) {
+                console.error('❌ Load subjects error:', error);
+                document.getElementById('subjectsList').innerHTML = '<p style="color: red;">Failed to load exams: ' + error.message + '</p>';
+            }
+        }
+
+        function displaySubjectsManagement(subjectsList) {
+            console.log('🟢 displaySubjectsManagement called with:', subjectsList);
+            const container = document.getElementById('subjectsList');
+            console.log('🟢 Container found:', container ? 'YES' : 'NO');
+            
+            if (subjectsList.length === 0) {
+                container.innerHTML = '<p>No exams found. Add your first exam!</p>';
+                return;
+            }
+            
+            const html = `
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Exam Name</th>
+                            <th>Duration (min)</th>
+                            <th>Description</th>
+                            <th>Total Questions</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${subjectsList.map(subject => `
+                            <tr>
+                                <td><strong>${subject.name}</strong></td>
+                                <td>${subject.duration}</td>
+                                <td>${subject.description || '-'}</td>
+                                <td>${allQuestions[subject.id]?.length || 0}</td>
+                                <td>
+                                    <button onclick="editSubject('${subject.id}')" 
+                                            class="btn btn-primary" 
+                                            style="padding: 5px 10px; font-size: 12px; margin-right: 5px;">
+                                        ✏️ Edit
+                                    </button>
+                                    <button onclick="deleteSubject('${subject.id}', '${subject.name}')" 
+                                            class="btn btn-danger" 
+                                            style="padding: 5px 10px; font-size: 12px;">
+                                        🗑️ Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        function showAddSubjectForm() {
+            document.getElementById('addSubjectForm').style.display = 'block';
+            document.getElementById('newSubjectName').focus();
+        }
+
+        function hideAddSubjectForm() {
+            document.getElementById('addSubjectForm').style.display = 'none';
+            document.getElementById('newSubjectName').value = '';
+            document.getElementById('newSubjectDuration').value = '';
+            document.getElementById('newSubjectDescription').value = '';
+        }
+
+        async function addSubject(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('newSubjectName').value.trim();
+            const duration = parseInt(document.getElementById('newSubjectDuration').value);
+            const description = document.getElementById('newSubjectDescription').value.trim();
+            
+            if (!name || !duration) {
+                alert('❌ Please fill in all required fields!');
+                return;
+            }
+            
+            try {
+                const result = await apiCall('/admin/subjects', {
+                    method: 'POST',
+                    body: JSON.stringify({ name, duration, description })
+                });
+                
+                if (result.success) {
+                    alert('✓ Exam added successfully!');
+                    hideAddSubjectForm();
+                    await loadSubjectsManagement();
+                    await loadDashboardData(); // Refresh dashboard stats
+                } else {
+                    alert('❌ Failed to add exam');
+                }
+            } catch (error) {
+                console.error('Add subject error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        async function editSubject(subjectId) {
+            const subject = subjects.find(s => s.id === subjectId);
+            if (!subject) return;
+
+            const newName = prompt('Enter new exam name:', subject.name);
+            if (!newName || newName.trim() === '') return;
+
+            const newDuration = prompt('Enter new duration (minutes):', subject.duration);
+            if (!newDuration || isNaN(newDuration)) return;
+
+            const newDescription = prompt('Enter new description (optional):', subject.description || '');
+
+            try {
+                const result = await apiCall(`/admin/subjects/${subjectId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        name: newName.trim(),
+                        duration: parseInt(newDuration),
+                        description: newDescription.trim()
+                    })
+                });
+                
+                if (result.success) {
+                    alert('✓ Exam updated successfully!');
+                    await loadSubjectsManagement();
+                    await loadDashboardData();
+                } else {
+                    alert('❌ Failed to update exam');
+                }
+            } catch (error) {
+                console.error('Edit subject error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        async function deleteSubject(subjectId, subjectName) {
+            const questionCount = allQuestions[subjectId]?.length || 0;
+
+            const confirmMsg = questionCount > 0
+                ? `⚠️ WARNING: Exam "${subjectName}" has ${questionCount} questions!\n\nDeleting this exam will also delete all its questions.\n\nAre you sure you want to continue?`
+                : `Are you sure you want to delete exam "${subjectName}"?`;
+
+            if (!confirm(confirmMsg)) {
+                return;
+            }
+            
+            try {
+                const result = await apiCall(`/admin/subjects/${subjectId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (result.success) {
+                    alert('✓ Exam deleted successfully!');
+                    await loadSubjectsManagement();
+                    await loadDashboardData();
+                } else {
+                    alert('❌ Failed to delete exam');
+                }
+            } catch (error) {
+                console.error('Delete exam error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+
+        async function downloadSurpriseTestResults() {
+            try {
+                const response = await fetch(API_BASE + '/admin/export-surprise-test');
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    alert('❌ ' + (error.error || 'Failed to export'));
+                    return;
+                }
+                
+                const disposition = response.headers.get('Content-Disposition');
+                let filename = 'Surprise_Test_Results.xlsx';
+                if (disposition && disposition.includes('filename=')) {
+                    filename = disposition.split('filename=')[1].replace(/"/g, '');
+                }
+                
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+                
+                alert('✓ Surprise test results downloaded!');
+                
+            } catch (error) {
+                console.error('Download error:', error);
+                alert('❌ Failed: ' + error.message);
+            }
+        }
+
+    </script>
+
+    <!-- Developer Credit Footer -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.9); color: white; text-align: center; padding: 10px; font-size: 13px; z-index: 10000; backdrop-filter: blur(10px); border-top: 2px solid rgba(102, 126, 234, 0.5);">
+        <span style="opacity: 0.9;">💻 <strong style="color: #667eea; font-size: 14px;">Developed by Rajeev K. Thakur</strong></span>
+        <span style="margin: 0 15px; opacity: 0.5;">|</span>
+        <span style="opacity: 0.8;">KYP Exam System v1.0</span>
+        <span style="margin: 0 15px; opacity: 0.5;">|</span>
+        <span style="opacity: 0.7;">© 2025 All Rights Reserved</span>
+    </div>
+</body>
+</html>

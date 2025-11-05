@@ -1,0 +1,28 @@
+{
+  "name": "kyp-exam-system",
+  "version": "1.0.0",
+  "description": "KYP Exam System - Server for conducting online exams for Kushal Yuva Program",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "exam",
+    "education",
+    "kyp",
+    "kushal-yuva-program",
+    "online-exam",
+    "bihar",
+    "mithila"
+  ],
+  "author": "Mithila Education and Welfare Society",
+  "license": "MIT",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "mammoth": "^1.11.0",
+    "multer": "^2.0.2",
+    "pdf-parse": "^2.4.5"
+  }
+}

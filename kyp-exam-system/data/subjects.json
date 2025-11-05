@@ -1,0 +1,45 @@
+[
+  {
+    "id": "bs-cit",
+    "name": "Bihar State - Certificate in Information Technology (BS-CIT)",
+    "shortName": "BS-CIT",
+    "duration": 60,
+    "totalMarks": 20,
+    "description": "",
+    "showAnswers": false
+  },
+  {
+    "id": "bs-cls",
+    "name": "Bihar State - Certificate in Language Skill (BS-CLS)",
+    "shortName": "BS-CLS",
+    "duration": 30,
+    "totalMarks": 15,
+    "showAnswers": true
+  },
+  {
+    "id": "bs-css",
+    "name": "Bihar State - Certificate in Soft Skills (BS-CSS)",
+    "shortName": "BS-CSS",
+    "duration": 30,
+    "totalMarks": 15,
+    "showAnswers": true
+  },
+  {
+    "id": "bs-cfa",
+    "name": "Bihar State - Certificate in Financial Accounting (BS-CFA)",
+    "shortName": "BS-CFA",
+    "duration": 60,
+    "totalMarks": 25,
+    "showAnswers": true
+  },
+  {
+    "id": "surprise-test",
+    "name": "Surprise Test",
+    "shortName": "Surprise Test",
+    "duration": 60,
+    "totalMarks": 50,
+    "isSurpriseTest": true,
+    "description": "",
+    "showAnswers": true
+  }
+]

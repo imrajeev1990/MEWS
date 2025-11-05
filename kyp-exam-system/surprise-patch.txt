@@ -1,0 +1,7 @@
+﻿            // Special handling for surprise test
+            if (isSurpriseTest) {
+                document.getElementById('finalScore').textContent = 'Test Submitted';
+                document.getElementById('finalPercentage').textContent = 'Your results will be reviewed by the admin';
+                document.getElementById('answerReview').innerHTML = '<div style="text-align: center; padding: 40px; font-size: 18px; color: #27ae60;">✅ Your test has been submitted successfully!<br><br>Results will be shared by the admin.</div>';
+                return;
+            }
