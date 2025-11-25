@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Tabs</title>
+    <style>
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .admin-tab {
+            padding: 15px 25px;
+            background: white;
+            border: 2px solid #ccc;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .admin-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tab Test Page</h1>
+    <div class="admin-tabs">
+        <button class="admin-tab active">📝 Questions</button>
+        <button class="admin-tab">📊 Results</button>
+        <button class="admin-tab">👥 Students</button>
+        <button class="admin-tab">📚 Exams</button>
+        <button class="admin-tab" style="background: rgba(231, 76, 60, 0.1); border: 2px solid #e74c3c;">📋 Server Logs</button>
+        <button class="admin-tab">⚙️ Settings</button>
+    </div>
+    <p>If you can see 6 tabs above (including "Server Logs" with red border), then the HTML is correct.</p>
+</body>
+</html>

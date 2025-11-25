@@ -6,7 +6,7 @@
     "duration": 60,
     "totalMarks": 20,
     "description": "",
-    "showAnswers": false
+    "showAnswers": true
   },
   {
     "id": "bs-cls",

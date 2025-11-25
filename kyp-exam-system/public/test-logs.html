@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Server Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        #result {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #229954;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Server Logs Test Page</h1>
+    <button onclick="fetchLogs()">Fetch Logs</button>
+    <div id="result">Click button to fetch logs...</div>
+
+    <script>
+        async function fetchLogs() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Fetching logs...';
+            
+            try {
+                const response = await fetch('/api/admin/logs?limit=50');
+                const data = await response.json();
+                
+                resultDiv.textContent = 'API Response:\n\n' + JSON.stringify(data, null, 2);
+                
+                console.log('Response:', data);
+                console.log('Success:', data.success);
+                console.log('Logs array:', data.logs);
+                console.log('Logs count:', data.logs?.length);
+                
+                if (data.logs && data.logs.length > 0) {
+                    console.log('First log:', data.logs[0]);
+                    alert(`✅ Success! Found ${data.logs.length} logs`);
+                } else {
+                    alert('⚠️ No logs found in response');
+                }
+                
+            } catch (error) {
+                resultDiv.textContent = '❌ Error: ' + error.message;
+                console.error('Error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+        
+        // Auto-fetch on page load
+        window.onload = fetchLogs;
+    </script>
+</body>
+</html>

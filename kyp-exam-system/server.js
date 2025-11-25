@@ -8,9 +8,76 @@ const mammoth = require('mammoth');
 const app = express();
 const PORT = 8080;
 
+// Server logs storage (in-memory for now)
+const serverLogs = [];
+const MAX_LOGS = 1000; // Keep last 1000 logs
+
+// Custom logging function
+function logToConsole(type, message, data = null) {
+    const timestamp = new Date().toISOString();
+    const logEntry = {
+        timestamp,
+        type, // 'info', 'error', 'warn', 'success', 'delete'
+        message,
+        data: data ? JSON.stringify(data, null, 2) : null
+    };
+    
+    // Add to in-memory logs
+    serverLogs.push(logEntry);
+    if (serverLogs.length > MAX_LOGS) {
+        serverLogs.shift(); // Remove oldest log
+    }
+    
+    // Also log to console
+    const emoji = {
+        'info': 'ℹ️',
+        'error': '❌',
+        'warn': '⚠️',
+        'success': '✅',
+        'delete': '🗑️'
+    }[type] || '📝';
+    
+    console.log(`${emoji} [${new Date().toLocaleTimeString()}] ${message}`);
+    if (data) {
+        console.log(data);
+    }
+}
+
+// Override console.log for delete operations
+const originalConsoleLog = console.log;
+console.log = function(...args) {
+    originalConsoleLog.apply(console, args);
+    
+    // Capture DELETE ALL logs
+    const message = args.join(' ');
+    if (message.includes('[DELETE ALL]')) {
+        const logType = message.includes('Successfully') ? 'success' : 
+                       message.includes('Error') || message.includes('Failed') ? 'error' : 'info';
+        serverLogs.push({
+            timestamp: new Date().toISOString(),
+            type: logType,
+            message: message,
+            data: null
+        });
+        if (serverLogs.length > MAX_LOGS) {
+            serverLogs.shift();
+        }
+    }
+};
+
 // Middleware
 app.use(express.json());
 app.use(express.static('public'));
+
+// Request logging middleware
+app.use((req, res, next) => {
+    // Log all DELETE requests
+    if (req.method === 'DELETE') {
+        logToConsole('info', `DELETE request: ${req.method} ${req.path}`);
+        console.log(`[REQUEST] ${req.method} ${req.path}`);
+    }
+    next();
+});
 
 // Set UTF-8 encoding for all responses
 app.use((req, res, next) => {
@@ -62,6 +129,152 @@ const RESULTS_FILE = path.join(DATA_DIR, 'results.json');
 const ADMIN_FILE = path.join(DATA_DIR, 'admin.json');
 
 // Question parsing functions
+
+// Function to normalize Hindi text from different fonts/encodings
+function normalizeHindiText(text) {
+    if (!text) return '';
+    
+    // Ensure the text is properly decoded as UTF-8
+    // This helps with Mangal, Devanagari Unicode fonts
+    try {
+        // Normalize Unicode characters (NFC normalization)
+        text = text.normalize('NFC');
+        
+        // Remove any zero-width characters that might cause issues
+        text = text.replace(/[\u200B-\u200D\uFEFF]/g, '');
+        
+        // Normalize common Hindi punctuation variations
+        text = text.replace(/।/g, '।'); // Devanagari Danda
+        text = text.replace(/॥/g, '॥'); // Devanagari Double Danda
+        
+        // Handle any BOMs or special markers
+        text = text.replace(/^\uFEFF/, '');
+        
+        // Normalize whitespace but preserve structure
+        text = text.replace(/\r\n/g, '\n');
+        text = text.replace(/\r/g, '\n');
+        
+        // Remove excessive spaces but keep single spaces
+        text = text.replace(/[ \t]+/g, ' ');
+        
+        // Preserve line breaks for structure
+        text = text.replace(/\n{3,}/g, '\n\n');
+        
+    } catch (error) {
+        console.error('Text normalization error:', error);
+    }
+    
+    return text;
+}
+
+function parseNumberedQuestions(text, language) {
+    const questions = [];
+    
+    // Strategy: Split text into segments by question numbers
+    // Handle both multi-line and inline formats
+    
+    // First, normalize the text - replace common inline separators
+    let normalizedText = text
+        .replace(/Answer:\s*[A-D]/gi, '') // Remove Answer: A/B/C/D markers
+        .replace(/\r\n/g, '\n')
+        .replace(/\r/g, '\n');
+    
+    // Split by question numbers (1. 2. 3. etc.)
+    const questionSegments = normalizedText.split(/(?=\d+[\.\)]\s)/);
+    
+    for (let segment of questionSegments) {
+        segment = segment.trim();
+        if (segment.length < 10) continue;
+        
+        // Extract question number and text
+        const questionMatch = segment.match(/^(\d+)[\.\)]\s*(.+)$/s);
+        if (!questionMatch) continue;
+        
+        const questionNumber = questionMatch[1];
+        let remainingText = questionMatch[2].trim();
+        
+        // Try to extract options from the text
+        // Pattern: A) text B) text C) text D) text
+        // Or: A. text B. text C. text D. text
+        // Or even: AतextBतextCतextDtext (no separators)
+        
+        const options = [];
+        let questionText = '';
+        
+        // Try to split by the pattern A) B) C) D)
+        // Look for: A) text B) text C) text D) text
+        const optionSplitPattern = /([A-D])\s*\)\s*/gi;
+        
+        // First, find where options start
+        const firstOptionMatch = remainingText.match(/([A-D])\s*\)/i);
+        
+        if (firstOptionMatch) {
+            const firstOptionIndex = remainingText.indexOf(firstOptionMatch[0]);
+            
+            // Everything before first option is question text
+            if (firstOptionIndex > 0) {
+                questionText = remainingText.substring(0, firstOptionIndex).trim();
+                // Ensure question ends with ?
+                if (!questionText.endsWith('?')) {
+                    questionText += '?';
+                }
+            }
+            
+            // Get the options part
+            const optionsText = remainingText.substring(firstOptionIndex);
+            
+            // Split by option markers A) B) C) D)
+            const optionParts = optionsText.split(/[A-D]\s*\)/i);
+            
+            // Skip first part (empty) and collect next 4 parts
+            for (let j = 1; j < optionParts.length && options.length < 4; j++) {
+                let optText = optionParts[j].trim();
+                
+                // Remove "Answer: X" markers
+                optText = optText.replace(/Answer\s*:\s*[A-D].*$/i, '').trim();
+                
+                // Stop at next question number
+                const nextQMatch = optText.match(/\d+[\.\)]\s/);
+                if (nextQMatch) {
+                    optText = optText.substring(0, optText.indexOf(nextQMatch[0])).trim();
+                }
+                
+                if (optText.length > 0 && optText.length < 300) {
+                    options.push(optText);
+                }
+            }
+        } else {
+            // No options found, just use text as question
+            questionText = remainingText.split('\n')[0].trim();
+            if (!questionText.endsWith('?')) {
+                questionText += '?';
+            }
+        }
+        
+        // Create question if we have valid data
+        if (questionText.length > 5 && options.length === 4) {
+            questions.push({
+                id: questions.length + 1,
+                question: language === 'en' ? 
+                    { hi: questionText, en: questionText } : 
+                    { hi: questionText, en: questionText },
+                options: language === 'en' ? 
+                    { hi: options, en: options } : 
+                    { hi: options, en: options },
+                correct: 0,
+                marks: 1,
+                difficulty: 'medium'
+            });
+            console.log(`✅ Extracted Q${questionNumber}: ${questionText.substring(0, 50)}... with ${options.length} options`);
+        } else {
+            console.log(`⚠️  Question ${questionNumber}: Incomplete - text=${questionText.length}chars, options=${options.length}`);
+        }
+    }
+    
+    return questions;
+}
+
+
 function parseQuestionsFromText(text, language = 'hi') {
     const questions = [];
     
@@ -70,20 +283,25 @@ function parseQuestionsFromText(text, language = 'hi') {
     
     // Try multiple parsing strategies
     
-    // Strategy 1: Split by question numbers (Q1, Q2, 1., 2., etc.)
-    const questionBlocks = text.split(/(?=(?:Q|à¤ªà¥à¤°|à¤ªà¥à¤°à¤¶à¥à¤¨|Question)?\s*[\.\):]?\s*\d+[\.\):])/i);
+    // Strategy 1: Look for "Q1:" or "Q1." patterns followed by numbered questions with options
+    const qBlocks = text.split(/Q\d+:/i);
     
-    for (let i = 0; i < questionBlocks.length; i++) {
-        const block = questionBlocks[i].trim();
+    for (let i = 1; i < qBlocks.length; i++) {
+        const block = qBlocks[i].trim();
         if (block.length < 10) continue;
         
-        const questionData = extractQuestionParts(block, i + 1, language);
-        if (questionData) {
-            questions.push(questionData);
-        }
+        // Parse this Q block which may contain multiple numbered questions
+        const numberedQuestions = parseNumberedQuestions(block, language);
+        questions.push(...numberedQuestions);
     }
     
-    // Strategy 2: If no questions found, try splitting by double newlines
+    // Strategy 2: If no Q blocks found, split by question numbers (1., 2., etc.)
+    if (questions.length === 0) {
+        const numberedQuestions = parseNumberedQuestions(text, language);
+        questions.push(...numberedQuestions);
+    }
+    
+    // Strategy 3: If no questions found, try splitting by double newlines
     if (questions.length === 0) {
         const blocks = text.split(/\n\s*\n/);
         for (let i = 0; i < blocks.length; i++) {
@@ -97,7 +315,7 @@ function parseQuestionsFromText(text, language = 'hi') {
         }
     }
     
-    // Strategy 3: If still no questions, try line-by-line with option detection
+    // Strategy 4: If still no questions, try line-by-line with option detection
     if (questions.length === 0) {
         const lines = text.split('\n');
         let currentQuestion = '';
@@ -150,16 +368,21 @@ function extractQuestionParts(text, id, language) {
     text = text.replace(/^(?:Q|à¤ªà¥à¤°|à¤ªà¥à¤°à¤¶à¥à¤¨|Question)?\s*[\.\):]?\s*\d+[\.\):]?\s*/i, '').trim();
     
     // Extended option patterns to match more formats
+    // Extended option patterns to match more formats
+    // Support for Devanagari, Mangal, Kruti Dev, and all Hindi fonts
     const optionPatterns = [
-        /^([A-D])\)\s*([^\n]+)/gm,           // A) Option
-        /^\(([A-D])\)\s*([^\n]+)/gm,         // (A) Option
-        /^\[([A-D])\]\s*([^\n]+)/gm,         // [A] Option
-        /^([A-D])[\.\:]\s*([^\n]+)/gm,       // A. Option or A: Option
-        /^([abcd])\)\s*([^\n]+)/gm,          // a) Option
-        /^\(([abcd])\)\s*([^\n]+)/gm,        // (a) Option
-        /^([à¥§-à¥ª])\)\s*([^\n]+)/gm,           // Hindi numerals
-        /^à¤µà¤¿à¤•à¤²à¥à¤ª\s*([A-D])[:\.\)]\s*([^\n]+)/gm,  // à¤µà¤¿à¤•à¤²à¥à¤ª A) Option
-        /^Option\s*([A-D])[:\.\)]\s*([^\n]+)/gm   // Option A) text
+        /^([A-D])\)\s*([^\n]+)/gm,                    // A) Option
+        /^\(([A-D])\)\s*([^\n]+)/gm,                  // (A) Option
+        /^\[([A-D])\]\s*([^\n]+)/gm,                  // [A] Option
+        /^\{([A-D])\}\s*([^\n]+)/gm,                  // {A} Option
+        /^([A-D])[\.\:]\s*([^\n]+)/gm,                // A. Option or A: Option
+        /^([abcd])\)\s*([^\n]+)/gm,                   // a) Option
+        /^\(([abcd])\)\s*([^\n]+)/gm,                 // (a) Option
+        /^([०-९१-४])\)\s*([^\n]+)/gm,                 // Hindi numerals (Devanagari)
+        /^([१-४])\)\s*([^\n]+)/gm,                    // Hindi numerals 1-4
+        /^विकल्प\s*([A-D])[:\.\)]\s*([^\n]+)/gm,       // विकल्प A) Option
+        /^Option\s*([A-D])[:\.\)]\s*([^\n]+)/gm,      // Option A) text
+        /^([A-D])[\)\.\:][\s\u00A0\u200B]+([^\n]+)/gm // With special spaces
     ];
     
     let questionText = '';
@@ -548,7 +771,7 @@ function readJSONFile(filepath) {
 
 function writeJSONFile(filepath, data) {
     try {
-        fs.writeFileSync(filepath, JSON.stringify(data, null, 2));
+        fs.writeFileSync(filepath, JSON.stringify(data, null, 2), 'utf8');
         return true;
     } catch (error) {
         console.error('Error writing file:', filepath, error);
@@ -1058,13 +1281,29 @@ app.post('/api/admin/upload-questions', upload.single('questionFile'), async (re
             const pdfData = await pdfParse(dataBuffer);
             extractedText = pdfData.text;
         } else if (fileExtension === '.docx' || fileExtension === '.doc') {
-            const result = await mammoth.extractRawText({ path: filePath });
+            // Use mammoth with options to preserve formatting and handle all Unicode
+            const result = await mammoth.extractRawText({ 
+                path: filePath,
+                convertImage: mammoth.images.inline(function(element) {
+                    return element.read("base64").then(function(imageBuffer) {
+                        return {
+                            src: "data:" + element.contentType + ";base64," + imageBuffer
+                        };
+                    });
+                })
+            });
             extractedText = result.value;
+            
+            // Normalize text to handle different encodings (Kruti Dev, Mangal, etc.)
+            extractedText = normalizeHindiText(extractedText);
         } else {
             // Clean up uploaded file
             fs.unlinkSync(filePath);
             return res.status(400).json({ error: 'Unsupported file format' });
         }
+        
+        // Log extracted text for debugging (first 500 chars)
+        console.log('Extracted text preview:', extractedText.substring(0, 500));
         
         // Parse questions from extracted text
         const parsedQuestions = parseQuestionsFromText(extractedText, language);
@@ -1147,7 +1386,10 @@ app.get('/api/admin/questions', (req, res) => {
 app.post('/api/admin/questions', (req, res) => {
     const { subjectId, question, options, correct, marks, difficulty } = req.body;
     
+    logToConsole('info', `[ADD QUESTION] Adding question to exam: ${subjectId}`);
+    
     if (!subjectId || !question || !options || correct === undefined || !marks) {
+        logToConsole('error', '[ADD QUESTION] Missing required fields');
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -1155,6 +1397,7 @@ app.post('/api/admin/questions', (req, res) => {
     
     if (!allQuestions[subjectId]) {
         allQuestions[subjectId] = [];
+        logToConsole('info', `[ADD QUESTION] Creating new question array for ${subjectId}`);
     }
 
     const newQuestion = {
@@ -1167,16 +1410,19 @@ app.post('/api/admin/questions', (req, res) => {
     };
 
     allQuestions[subjectId].push(newQuestion);
+    const totalQuestions = allQuestions[subjectId].length;
 
     if (writeJSONFile(QUESTIONS_FILE, allQuestions)) {
+        logToConsole('success', `[ADD QUESTION] Question added successfully. Total questions for ${subjectId}: ${totalQuestions}`);
         res.json({ success: true, message: 'Question added successfully' });
     } else {
+        logToConsole('error', '[ADD QUESTION] Failed to write to file');
         res.status(500).json({ error: 'Failed to add question' });
     }
 });
 
 // Update/Edit question
-app.put('/api/admin/questions/:subjectId/:questionId', (req, res) => {
+app.put('/api/admin/questions/:subjectId/:questionId(\\d+)', (req, res) => {
     const { subjectId, questionId } = req.params;
     const updatedQuestion = req.body;
     const allQuestions = readJSONFile(QUESTIONS_FILE) || {};
@@ -1204,8 +1450,79 @@ app.put('/api/admin/questions/:subjectId/:questionId', (req, res) => {
     }
 });
 
-// Delete question
-app.delete('/api/admin/questions/:subjectId/:questionId', (req, res) => {
+// Delete all questions for a subject (MUST BE BEFORE single question delete!)
+app.delete('/api/admin/questions/:subjectId/delete-all', (req, res) => {
+    const { subjectId } = req.params;
+    
+    logToConsole('delete', `[DELETE ALL] Request received for subject: ${subjectId}`);
+    console.log(`[DELETE ALL] ==========================================`);
+    console.log(`[DELETE ALL] Request received for subject: ${subjectId}`);
+    console.log(`[DELETE ALL] Full URL: ${req.url}`);
+    console.log(`[DELETE ALL] Params:`, req.params);
+    
+    const allQuestions = readJSONFile(QUESTIONS_FILE) || {};
+    console.log(`[DELETE ALL] Available subjects:`, Object.keys(allQuestions));
+
+    if (!allQuestions[subjectId]) {
+        logToConsole('error', `[DELETE ALL] Subject not found: ${subjectId}`);
+        console.log(`[DELETE ALL] Subject not found: ${subjectId}`);
+        console.log(`[DELETE ALL] Looking for '${subjectId}' but only have:`, Object.keys(allQuestions));
+        return res.status(404).json({ error: 'Subject not found' });
+    }
+
+    const deletedCount = allQuestions[subjectId].length;
+    logToConsole('info', `[DELETE ALL] Found ${deletedCount} questions to delete`);
+    console.log(`[DELETE ALL] Found ${deletedCount} questions to delete`);
+    
+    if (deletedCount === 0) {
+        logToConsole('info', `[DELETE ALL] No questions to delete for ${subjectId}`);
+        console.log(`[DELETE ALL] No questions to delete for ${subjectId}`);
+        return res.json({ success: true, message: 'No questions to delete', deletedCount: 0 });
+    }
+
+    // Create backup before deleting
+    const backupFile = QUESTIONS_FILE + '.backup';
+    try {
+        fs.copyFileSync(QUESTIONS_FILE, backupFile);
+        logToConsole('success', `[DELETE ALL] Backup created`);
+        console.log(`[DELETE ALL] Backup created at ${backupFile}`);
+    } catch (backupError) {
+        logToConsole('warn', `[DELETE ALL] Could not create backup: ${backupError.message}`);
+        console.warn(`[DELETE ALL] Could not create backup: ${backupError.message}`);
+    }
+    
+    // Clear all questions for this subject
+    allQuestions[subjectId] = [];
+    
+    logToConsole('info', `[DELETE ALL] Writing updated questions to file...`);
+    console.log(`[DELETE ALL] Writing updated questions to file...`);
+    console.log(`[DELETE ALL] Questions remaining in memory: ${JSON.stringify(Object.keys(allQuestions).map(key => ({subject: key, count: allQuestions[key].length})))}`);
+
+    if (writeJSONFile(QUESTIONS_FILE, allQuestions)) {
+        logToConsole('success', `[DELETE ALL] Successfully deleted ${deletedCount} questions from ${subjectId}`);
+        console.log(`[DELETE ALL] Successfully deleted ${deletedCount} questions from ${subjectId}`);
+        
+        // Verify the file was written correctly
+        const verifyRead = readJSONFile(QUESTIONS_FILE);
+        const actualCount = verifyRead && verifyRead[subjectId] ? verifyRead[subjectId].length : 0;
+        logToConsole('info', `[DELETE ALL] Verification: ${actualCount} questions remaining`);
+        console.log(`[DELETE ALL] Verification: ${actualCount} questions remaining for ${subjectId}`);
+        
+        res.json({ 
+            success: true, 
+            message: `Successfully deleted all ${deletedCount} questions`,
+            deletedCount: deletedCount,
+            remainingCount: actualCount
+        });
+    } else {
+        logToConsole('error', `[DELETE ALL] Failed to write to file for ${subjectId}`);
+        console.error(`[DELETE ALL] Failed to write to file for ${subjectId}`);
+        res.status(500).json({ error: 'Failed to delete questions' });
+    }
+});
+
+// Delete single question (MUST BE AFTER delete-all to avoid route conflict!)
+app.delete('/api/admin/questions/:subjectId/:questionId(\\d+)', (req, res) => {
     const { subjectId, questionId } = req.params;
     const allQuestions = readJSONFile(QUESTIONS_FILE) || {};
     
@@ -1219,35 +1536,6 @@ app.delete('/api/admin/questions/:subjectId/:questionId', (req, res) => {
         }
     } else {
         res.status(404).json({ error: 'Subject not found' });
-    }
-});
-
-// Delete all questions for a subject
-app.delete('/api/admin/questions/:subjectId/delete-all', (req, res) => {
-    const { subjectId } = req.params;
-    const allQuestions = readJSONFile(QUESTIONS_FILE) || {};
-
-    if (!allQuestions[subjectId]) {
-        return res.status(404).json({ error: 'Subject not found' });
-    }
-
-    const deletedCount = allQuestions[subjectId].length;
-    
-    if (deletedCount === 0) {
-        return res.json({ success: true, message: 'No questions to delete', deletedCount: 0 });
-    }
-
-    // Clear all questions for this subject
-    allQuestions[subjectId] = [];
-
-    if (writeJSONFile(QUESTIONS_FILE, allQuestions)) {
-        res.json({ 
-            success: true, 
-            message: `Successfully deleted all ${deletedCount} questions`,
-            deletedCount: deletedCount 
-        });
-    } else {
-        res.status(500).json({ error: 'Failed to delete questions' });
     }
 });
 
@@ -1483,8 +1771,11 @@ app.put('/api/admin/subjects/:subjectId', (req, res) => {
 app.delete('/api/admin/subjects/:subjectId', (req, res) => {
     const { subjectId } = req.params;
     
+    logToConsole('delete', `[DELETE EXAM] Request received for exam: ${subjectId}`);
+    
     const subjects = readJSONFile(SUBJECTS_FILE);
     if (!subjects) {
+        logToConsole('error', `[DELETE EXAM] Failed to load subjects file`);
         return res.status(500).json({ error: 'Failed to load subjects' });
     }
     
@@ -1492,20 +1783,29 @@ app.delete('/api/admin/subjects/:subjectId', (req, res) => {
     const filteredSubjects = subjects.filter(s => s.id !== subjectId);
     
     if (filteredSubjects.length === initialLength) {
+        logToConsole('error', `[DELETE EXAM] Exam not found: ${subjectId}`);
         return res.status(404).json({ error: 'Subject not found' });
     }
     
+    const deletedSubject = subjects.find(s => s.id === subjectId);
+    logToConsole('info', `[DELETE EXAM] Deleting exam: ${deletedSubject?.name || subjectId}`);
+    
     // Also delete all questions for this subject
     const allQuestions = readJSONFile(QUESTIONS_FILE) || {};
+    const questionsCount = allQuestions[subjectId]?.length || 0;
     delete allQuestions[subjectId];
     
+    logToConsole('info', `[DELETE EXAM] Also deleting ${questionsCount} questions for this exam`);
+    
     if (writeJSONFile(SUBJECTS_FILE, filteredSubjects) && writeJSONFile(QUESTIONS_FILE, allQuestions)) {
+        logToConsole('success', `[DELETE EXAM] Successfully deleted exam "${deletedSubject?.name}" and ${questionsCount} questions`);
         res.json({ 
             success: true, 
             message: 'Subject and its questions deleted successfully',
             subjectId 
         });
     } else {
+        logToConsole('error', `[DELETE EXAM] Failed to write files`);
         res.status(500).json({ error: 'Failed to delete subject' });
     }
 });
@@ -1647,6 +1947,37 @@ app.get('/api/info', (req, res) => {
         uptime: process.uptime(),
         startTime: new Date(Date.now() - process.uptime() * 1000).toISOString()
     });
+});
+
+// API endpoint to get server logs
+app.get('/api/admin/logs', (req, res) => {
+    const limit = parseInt(req.query.limit) || 100;
+    const type = req.query.type; // filter by type
+    
+    let logs = [...serverLogs];
+    
+    // Filter by type if specified
+    if (type && type !== 'all') {
+        logs = logs.filter(log => log.type === type);
+    }
+    
+    // Return last N logs (newest first)
+    const recentLogs = logs.slice(-limit).reverse();
+    
+    res.json({
+        success: true,
+        count: recentLogs.length,
+        total: serverLogs.length,
+        logs: recentLogs
+    });
+});
+
+// API endpoint to clear logs
+app.delete('/api/admin/logs', (req, res) => {
+    const cleared = serverLogs.length;
+    serverLogs.length = 0;
+    logToConsole('info', `Cleared ${cleared} log entries`);
+    res.json({ success: true, message: `Cleared ${cleared} logs` });
 });
 
 // Root route - serve index.html

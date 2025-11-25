@@ -1,0 +1,29 @@
+1. COMPUTER क्या है?
+A) वाहन
+B) खाना बनाने की मशीन
+C) गणना करने वाली मशीन
+D) कपड़े धोने की मशीन
+
+2. कंप्युटर का FULL FORM क्या होता है?
+A) Common Operating Machine Used for Technical and Educational Research
+B) Computer Operated Machine Used in Technology
+C) Central Operating Machine Unit
+D) Common Optical Machine Unit
+
+3. एमएस वर्ड क्या है?
+A) गेम है
+B) वेब ब्राउज़र है
+C) वर्ड प्रोसेसिंग सॉफ्टवेयर
+D) एंटीवायरस है
+
+4. कंप्युटर का दूसरा GENERATION कब से कब तक चला?
+A) 1956–1963
+B) 1940–1956
+C) 1964–1971
+D) 1971–1981
+
+5. BS-CIT का फुल फर्म क्या होता है?
+A) Basic Software Course In Technology
+B) Bihar State Course In IT
+C) Basic Science Course In Information Technology
+D) Bihar State Certificate In Information Technology
